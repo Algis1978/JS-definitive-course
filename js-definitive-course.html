@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Definitive Course</title>
+    <style>
+        h2{
+            font-size: 26px;
+            color: midnightblue;
+            margin-left: 100px;
+        }
+        p {
+            font-size: 18px;
+            margin-left: 60px;
+        }
+    </style>
+</head>
+<body>
+    <script src="./js-definitive-course.js"></script>
+    
+<h2>OBJEKTAI</h2>
+<p>
+//Objektas - duomenų porų 'pavadinimas:vertė' rinkinys.<br>
+//Objekto sukūrimas per let, const ir var kintamuosius:<br>
+let knyga = {<br>
+    autorius: "V. M. Tekerėjus",<br>
+    puslapiuSkaicius: 823,<br>
+};//objektas yra tarp {skliaustų}.<br>
+console.log(knyga);<br>
+//Objekto savybių pasiekimas:<br>
+knyga.autorius<br>
+console.log(knyga.autorius);<br>
+console.log(knyga["puslapiuSkaicius"]);<br>
+//Nesančių savybių iškvietimas (grąžins 'undefined'):<br>
+console.log(knyga.turinys);<br>
+//Objekto tekstinio pavadinimo savybės įvedimas:<br>
+knyga.pavadinimas = "Tuštybės mugė";<br>
+knyga.ISBN = "123-3234-345";<br>
+//Skaitinio pavadinimo savybės įvedimas:<br>
+knyga[100] = "kodas";<br>
+//Tuščios savybės įvedimas:<br>
+knyga.turinys = {};<br>
+console.log(knyga);<br>
+console.log(knyga.turinys);<br>
+</p>
+<h2>MASYVAI (arrays)</h2>
+<p>
+//Masyvai - numeruotų duomenų rinkiniai.<br>
+//Masyvų sukūrimas:<br>
+let gatvesNamuNumeriai = [1, 2, 3, 4, 5, 7, 9];//masyvas yra tarp [skliaustų].<br>
+console.log (gatvesNamuNumeriai);<br>
+//Masyvų elementai sunumeruoti, pradedant 0:<br>
+console.log (gatvesNamuNumeriai[2]);<br>
+//Masyvo elementų eilutės ilgis pasiekiamas per .length raktažodį:<br>
+console.log (gatvesNamuNumeriai.length);<br>
+//Pakutinio masyvo elemento pasiekimas:<br>
+console.log (gatvesNamuNumeriai[gatvesNamuNumeriai.length-1]);<br>
+//Masyvo elementų įvedimas arba keitimas:<br>
+gatvesNamuNumeriai[0]=23;<br>
+console.log (gatvesNamuNumeriai[0]);<br>
+//Galima įvesti į masyvą aukštesnio eilės skaičiaus elementus:<br>
+gatvesNamuNumeriai[10]=25;<br>
+console.log (gatvesNamuNumeriai[10]);<br>
+console.log (gatvesNamuNumeriai[9]);<br>
+console.log (gatvesNamuNumeriai.length);<br>
+// Tekstas turi masyvo savybių: - ilgį, simbolio numerį:<br>
+let z = "visada";<br>
+console.log (z.length); //teksto ilgis.<br>
+console.log (z[3]); //ketvirta raidė tekste.<br>
+
+//Tiek objektai, tiek masyvai gali būti tušti:<br>
+const tusciasObjektas = {};<br>
+const tusciasMasyvas = [];<br>
+console.log (tusciasObjektas);<br>
+console.log (tusciasMasyvas);<br>
+//Tiek objektai, tiek masyvai savo sudėtyje gali turėti kitus objektus ir masyvus.<br>
+</p>
+<h2>MATEMATINIAI OPERATORIAI</h2>
+<p>
+//Operatoriai - integruoti JS veiksmai su vertėmis (operandais).<br>
+//Matematiniai operatoriai +, -, /, *, ** (kėlimas laipsniu), % (grąžina dalybos liekaną);<br>
+//sutrumpinti matematiniai operatoriai:<br>
+let skaicius = 7;<br>
+skaicius++; //prideda vienetą.<br>
+console.log(skaicius);<br>
+skaicius--; //atima vienetą.<br>
+console.log(skaicius);<br>
+skaicius += 3; //prideda 3.<br>
+console.log(skaicius);<br>
+skaicius -= 4; //atima 4.<br>
+console.log(skaicius);<br>
+skaicius *= 4; //padaugina iš 4.<br>
+console.log(skaicius);<br>
+skaicius /= 3; //padalija iš 3.<br>
+console.log(skaicius);<br>
+</p>
+<h2>PALYGINIMO OPERATORIAI</h2>
+<p>
+//Palyginimo operatorių veiksmai gražina boolean vertes 'true'(teisinga) ir 'false' (neteisinga).<br>
+let x = 10, y = 5;<br>
+console.log (x===y); //false.<br>
+console.log (x!==y); //true.<br>
+console.log (x < y); //false.<br>
+console.log (x <= y); //false.<br>
+console.log (x > y); //true.<br>
+console.log (x >= y); //true.<br>
+console.log ("taip"==="ne"); //false.<br>
+console.log ("taip"==="taip"); //true.<br>
+console.log (false === (x===y)); //true, apversta vertė.<br>
+</p>
+<h2>LOGINIAI OPERATORIAI</h2>
+<p>
+// Loginiai operatoriai && - ir, || - ar, ! - priešingai,<br>
+//naudojami su boolean vertėmis.<br>
+console.log ((x!==y)&&(x > y)); //true (2 true).<br>
+console.log ((x!==y)&&(x <= y)); //false (1 true, 1 false).<br>
+console.log ((x!==y)||(x <= y)); //true (1 true, 1 false).<br>
+console.log (!(x!==y)); //false (apverstas 1 true).<br>
+</p>
+<h2>FUNKCIJOS</h2>
+<p>
+//Funkcija - kodo segmentas, kurį galima iššaukti kelis kartus vėliau kode.<br>
+//Pradedama raktažožiu 'function', po to seka 'pavadinimas', ('argumentas'), {'operacija'}.<br>
+function pridedamVieneta (k){<br>
+    return k+1<br>
+}<br>
+//'return' raktažodis grąžina funkcijos operacijos rezultatą.<br>
+console.log (pridedamVieneta (10));<br>
+//Funkcija gali būti priskirta kintamajam:<br>
+let m = function atimamVieneta (k) {<br>
+    return k-1<br>
+}<br>
+console.log(m (10));<br>
+//Funkcija gali būti kitos funkcijos argumentu.<br>
+console.log (m(pridedamVieneta (5))); //prideda vienetą ir po to m atima vienetą.<br>
+//Rodyklinės funkcijos daugiausiai skirtos perduoti bevardę funkciją vietoj argumento kitai funkcijai.<br>
+let l = k => k + 1;<br>
+//kintamojo l funkcijos argumentas k perduodamas operacijai k + 1.<br>
+console.log (l(15));<br>
+</p>
+<h2>METODAI</h2>
+<p>
+//Metodais vadinamos funkcijos, priskirtos objektų ir masyvų savybėms.<br>
+//Pagal nutylėjimą globalūs metodai priskirti objekto ir masyvo prototipo objektui:<br>
+let masyvas = [1, 2, 3, 4, 5, 6, 7]<br>
+//Pvz., funkcija 'reverse' perkeis elementų išdėstymą atbuline tvarka.<br>
+masyvas.reverse()<br>
+console.log (masyvas);<br>
+//Funkcija 'push' pridės naujus elementus.<br>
+masyvas.push (8, 9, 10)<br>
+console.log (masyvas);<br>
+//Objektų ir masyvų prototipų metodai nėra tapatūs.<br>
+//Savo susikurtą funkciją galima įvesti tarp objekto ir masyvo savybių.<br>
+//Pavyzdžiu panaudojam objektą 'knyga1'.<br>
+let knyga1 = {<br>
+    autorius: "V. M. Tekerėjus",<br>
+    puslapiuSkaicius: 823,<br>
+};<br>
+console.log (knyga1)<br>
+//Sukuriame funkciją, kuri sujungs autoriaus ir puslapių skaičiaus savybes į vieną sakinį.<br>
+//Šiuo atveju raktažodis 'this' nurodys į paties objekto savybes.<br>
+knyga1.aprasas = function () {<br>
+    return "Rašytojas "+this.autorius+" parašė "+this.puslapiuSkaicius+" puslapių knygą."<br>
+}<br>
+console.log (knyga1.aprasas ());<br>
+</p>
+<h2>MATEMATINĖS FUNKCIJOS</h2>
+<p>
+//Matematinės funkcijos yra JS įterptos funkcijos.<br>
+//Kai kurios jų:<br>
+console.log (Math.random()); //grąžina skaičių tarp 0 ir 1.<br>
+console.log (Math.abs(-10)); //grąžina absoliutinę skaičiaus vertę.<br>
+console.log (Math.round(1.32)); //suapvalina skaičių iki artimiausios sveikosios vertės.<br>
+console.log (Math.ceil(2.32)); //prideda trupmeninę dalį iki sveikojo skaičiaus.<br>
+console.log (Math.floor(2.32)); //atima trupmeninę dalį iki sveikojo skaičiaus;<br>
+console.log (Math.PI); //skaičius Pi.<br>
+console.log (Math.E); //skaičius E.<br>
+console.log (Math.log (10)); //skaičiaus 10 natūralus logaritmas.<br>
+console.log (Math.sqrt (16));//kvadratinė šaknis.<br>
+console.log (Math.pow (2, 6));//pirmo argumento pakėlimas antro argumento laipsniu.<br>
+console.log (Math.pow (64, 1/6));//antro argumento šaknis pirmam argumentui.<br>
+console.log (Math.sin(0.52359878)); // logaritminės funkcijos, taip pat cos, tan, atan su radianinėmis vertėmis.<br>
+</p>
+<h2>SKAIČIŲ FUNKCIJOS</h2>
+<p>
+//dalijimas iš nulio grąžina 'Infinity' vertę.<br>
+console.log (10/0);<br>
+//nulio dalijimas iš nulio grąžina NaN vertę.<br>
+console.log (0/0);<br>
+console.log (Number.isNaN(NaN));//patikrinimas ar argumentas nėra skaičius.<br>
+console.log (Number.isInteger(10));//patikrinimas ar argumentas yra sveikasis skaičius.<br>
+console.log (Number.isInteger(10.1));<br>
+console.log (Number.isFinite(10));//patikrinimas ar argumentas yra JS skaičius.<br>
+console.log (Number.parseInt ("12.8"));//pakeičia tekstą sveikuoju skaičiu.<br>
+console.log (Number.parseFloat ("12.3"));//pakeičia tekstą skaičiumi įskaitant trupmeninę dalį.<br>
+</p>
+<h2>DATA</h2>
+<p>
+let dabar = Date.now ();//grąžina laiką milisekundėmis nuo 1970 m. kažkada.<br>
+console.log(dabar);<br>
+dabar = new Date (); // grąžiną dabartinį komp. laiką anglišku formatu.<br>
+console.log(dabar);<br>
+let iso = dabar.toISOString(); //laiko formato perrašymas.<br>
+console.log (iso);<br>
+</p>
+<h2>TEKSTAS (string)</h2>
+<p>
+//Tekstiniai duomenys rašomi apskliausti viengubomis arba dvigubomis kabutėmis (pagal EN klaviatūrą):<br>
+console.log("tekstas");<br>
+console.log('tekstas');<br>
+//vienos eilutės tekstas perkeliamas į kitą eilutę per \n kombinaciją:<br>
+console.log('tekstas\nkita eilutė');<br>
+//kelių eilučių tekstas sukeliamas į vieną eilutę per \ simbolį:<br>
+console.log('tekstas\<br>
+ kita eilutė');<br>
+// Simbolis \ išveda ", ', \ kaip tekstą:<br>
+console.log ('tekstas\'tekstas\"tekstas\\')<br>
+// Simbolio \ kombinacijos:<br>
+console.log ("tekstas \xA9"); //Unicode simboliai.<br>
+console.log ("tekstas \u{1f600}"); //Unicode simboliai.<br>
+console.log ("tekstas \u1d60"); //Unicode simboliai.<br>
+</p>
+<h2>VEIKSMAI SU TEKSTAIS</h2>
+<p>
+// Su + galima sujungti tekstus į vieną:<br>
+console.log ("vienas"+"du"+"trys"+"keturi");<br>
+// Su === ir !== galima palyginti tekstus;<br>
+console.log ("vienas"==="du");<br>
+console.log ("vienas"!=="du");<br>
+//Kaip masyvo atveju su .length pamatuojamas teksto ilgis:<br>
+console.log ("vienas".length);<br>
+//Palyginami tekstų 16 bit kodai:<br>
+console.log ("vienas">"du");<br>
+</p>
+<h2>TEKSTŲ METODAI</h2>
+<p>
+// Metodai (grąžina naują tekstą):<br>
+console.log ("vienas".substring (1, 4));//teksto fragmentas.<br>
+console.log ("vienas".slice (-2));//paskutiniai du simboliai.<br>
+console.log ("vienas du".split (" "));//perkerta į du tekstus.<br>
+console.log ("vienas kiemas".indexOf ("e"));//pirma simbolio pozicija.<br>
+console.log ("vienas kiemas".indexOf ("e", 3));//pirma simbolio pozicija po antros pozicijos.<br>
+console.log ("vienas kiemas".indexOf ("u", 3));//jei simbolių nėra, grąžinamas -1. <br>
+console.log ("vienas kiemas".indexOf ("kie", 3));//galioja ir simbolių kombinacijom.<br>
+console.log ("vienas".startsWith ("k"));//patikrina, ar argumetu prasideda.<br>
+console.log ("vienas".endsWith ("k"));//patikrina, ar argumetu užsibaigia.<br>
+console.log ("vienas".includes ("ena"));//patikrina, ar yra argumentas.<br>
+console.log ("vienas".replace ("vien", "kiem"));//pakeičia pirmą argumentą antru.<br>
+console.log ("VieNas".toLowerCase ());//tik mažosios raidės.<br>
+console.log ("VieNas".toUpperCase ());//tik didžiosios raidės. <br>
+console.log ("vienas".charAt (1));//grąžina simbolį argumento pozicijoje.<br>
+console.log ("vienas".charAt ("vienas".length-1));//grąžina paskutinį simbolį.<br>
+console.log ("vienas"[1]);//tas pats traktuojant tekstą kaip masyvą.<br>
+console.log ("vienas"["vienas".length-1]);<br>
+console.log ("vienas ".trim ());//ištrina tuščius tarpus teksto pradžioje ir pabaigoje.<br>
+console.log ("vienas ".repeat (3));//pakartoja tekstą nurodytą argumentu kartų.<br>
+</p>
+<h2>TEKSTO IR KINTAMŲJŲ UŽRAŠYMAS KARTU</h2>
+<p>
+//Tekstas ir kintamieji užrašomi kartu naudojant + operatorių:<br>
+let penki = 5;<br>
+let padaugintaIsPenkiu = function (data) {<br>
+return data*penki<br>
+}<br>
+console.log ("Skaičių 8 padauginsiu iš "+penki+" ir gausiu "+padaugintaIsPenkiu (8)+".")<br>
+//Kitaip tą patį galima užrašyti per ` ženklą ir naudojant ${} kintamųjų vietos pažymėjimui ${}. Šiuo metodu galima užrašyti daugelio eilučių tekstą be \n kombinacijos:<br>
+console.log (`Skaičių 8 <br>
+padauginsiu iš ${penki} <br>
+ir gausiu ${padaugintaIsPenkiu (8)}.`)<br>
+</p>
+<h2>SPECIALIOS VERTĖS</h2>
+<p>
+//NaN - nurodo skaitinės vertės nebuvimą:<br>
+let h = 4 * "a";<br>
+console.log (h);<br>
+//undefined - nurodo vertės nebuvimą masyvuose, objektuose, kintamuosiuose ir tuo atveju, kai funkcija negrąžina vertės:<br>
+h = [];<br>
+console.log (h[5]);<br>
+//Infinity - nurodo JS nesuprantamą ypač didelį ar mažą (neigiamas Infinity) skaičių. Operacijos su Infinity grąžina Infinity.<br>
+h = 8/0 + 15;<br>
+console.log (h);<br>
+//null - nurodo objekto, skaičiaus, teksto nebuvimą, kur tikimąsi jį esant. Tapatus verte 'undefined', bet skiriasi tipu - yra objektas, kai 'undefined' neturi tipo (tipas 'undefined').<br>
+console.log(undefined==null);//true<br>
+console.log(undefined===null);//false<br>
+//0 ir -0 yra vertės, kai JS negali suprasti skaičiaus, esančio per arti nulio iš teigiamos ir neigiamos pusių.<br>
+h = -1e-100000;<br>
+console.log (h);<br>
+//boolean operacijose undefined, -0, 0, null, NaN ir "" (teksto nebūvimas) patys savaime grąžina 'false' vertes, kai kiti operandai grąžina 'true' vertes.<br>
+h = function (data) {<br>
+    if (null && 5===5){ //operandas null grąžino 'false'<br>
+        return data<br>
+    }<br>
+    else {<br>
+        return 10<br>
+    }<br>
+}<br>
+console.log (h (5));<br>
+h = function (data) {<br>
+    if (Infinity && 5===5){ //operandas Infinity grąžino 'true'<br>
+        return data<br>
+    }<br>
+    else {<br>
+        return 10<br>
+    }<br>
+}<br>
+console.log (h (5));<br>
+</p>
+<h2>PAPRASTOSIOS IR SUDĖTINĖS VERTĖS</h2>
+<p>
+//Paprastosiomis vertėmis vadinamos nekeičiamos vertės: skaičiai, tekstai, boolean ir spec. vertės.<br>
+// Sudėtinės vertės: objektai, masyvai, funkcijos.<br>
+
+//Operacijų metu naudojamos paprastosios vertės, kai sudėtinių verčių aveju - nuorodos į tas vertes.<br>
+//Pavyzdys 1:<br>
+let tekstas1 = "vienas";<br>
+let tekstas2 = "vienas";<br>
+console.log (tekstas1===tekstas2);//true, nes lyginamos vertės, kurios yra vienodos.<br>
+let masyvas1 = [1, 2, 3, 4];<br>
+let masyvas2 = [1, 2, 3, 4];<br>
+console.log (masyvas1===masyvas2);//flse, nes lyginamos nuorodos, kurios skirtingos.<br>
+//Pavyzdys 2 su tekstu:<br>
+console.log (tekstas1);<br>
+tekstas1.replace ("vien", "kiem");<br>
+console.log (tekstas1);//tekstas1 nepasikeitė.<br>
+let tekstas3 = tekstas1.replace ("vien", "kiem");<br>
+console.log (tekstas3);//sukurtas naujas tekstas3.<br>
+console.log (tekstas1);//tekstas1 nepasikeitė;<br>
+//Pavyzdys 2 su masyvu:<br>
+console.log (masyvas1);<br>
+masyvas1[0]=10;<br>
+console.log (masyvas1);//masyvo savybė [0] pasikeitė.<br>
+let masyvas3 = masyvas1;<br>
+console.log (masyvas3);//masyvas3 yra nuoroda į tą patį objektą kaip masyvas1 atveju.<br>
+masyvas3[0]=15;<br>
+console.log (masyvas1);<br>
+console.log (masyvas3);//savybės 0 pasikeitė objekte, į kurį nurodo masyvas1 ir masyvas2.<br>
+</p>
+<h2>PAPRASTŲJŲ VERČIŲ TIPŲ KEITIMAS</h2>
+<p>
+//vykdant veiksmus JS automatiškai keičia operandų tipus priklausomai nuo konteksto:<br>
+h = 2 * "3";<br>
+console.log (h);//atpažinęs matematinį operatorių, išskyrus +, JS stengsis pakeisti tekstą į skaičių. <br>
+h = "12"/"3";<br>
+console.log (h);<br>
+h = "3" + 2;<br>
+console.log (h);//+ atveju skaičių keis į tekstą.<br>
+h = 2 + true;<br>
+console.log (h);// boolean true atveju keis į skaičių 1.<br> 
+h = 2 + false;<br>
+console.log (h);// boolean false atveju keis į skaičių 0.<br>
+h = "3" + false;<br>
+console.log (h);//teksto su boolean aveju, boolean keičiamas į tekstą.<br>
+h = 2 / "dem";<br>
+console.log (h);//nesant galimybės tekstą suprasti kaip skaičių, grąžinamas NaN rezultatas.<br>
+
+//Galima keisti tipus funkcijų Number, String, Boolean pagalba:<br>
+console.log(Number("3"));<br>
+console.log(Number(false));<br>
+console.log(String(4));<br>
+console.log(String(true));<br>
+console.log(Boolean(0));<br>
+console.log(Boolean(Infinity));<br>
+</p>
+<h2>PAPRASTŲJŲ VERČIŲ KEITIMO METODAI IR FUNKCIJOS</h2>
+<p>
+//toString metodas leidžia konvertuoti atsižvelgiant į skaičiaus bazę:<br>
+h = 100;<br>
+console.log (h.toString (10));//dešimtainis kodas.<br>
+console.log ("0b" + h.toString (2));//binarinis kodas.<br>
+console.log ("0o" + h.toString (8));//okta kodas.<br>
+console.log ("0x" + h.toString (16));//heksa kodas.<br>
+
+//Skaičių keitimo metodai:<br>
+h = 127.34349<br>
+console.log (h.toFixed (0));//palieka 0 skaičių po kablelio.<br>
+console.log (h.toFixed (2));//palieka 2 skaičius po kablelio.<br>
+console.log (h.toExponential (3));//palieka 1 sveikąjį ir 3 skaičius po kablelio ir pateikia su "e" užrašymu.<br>
+console.log (h.toPrecision (7));//užrašo tik norimą kiekį skaičiaus ženklų, šiuo aveju septynis.<br>
+//PASTABA. Šios funkcijos suapvalina skaičius (paskutinis atvejis).<br>
+
+//Funkcijos parseInt ir parseFloat stengsis pakeisti visus įmanomus tekstų simbolius skaičiais:<br>
+console.log (parseInt ("6.87"));//parseInt grąžina sveikuosius skaičius.<br>
+console.log (parseInt ("0xFA3"));//funkcijos keičia heksa skaičius į dešimtainius.<br>
+console.log (parseInt ("01001", 2));//su nurodyta baze (antruoju argumentu) parseInt kovrtuoja skaičius į dešimtainius.<br>
+console.log (parseFloat ("6.87"));//parseFloat grąžina skaičius su trupmenine dalimi.<br>
+console.log (parseFloat ("3.14true"));//funkcijos grąžina skaičių, jei jis yra teksto priekyje.<br>
+console.log (parseFloat ("true 3.14"));//funkcijos nesupranta skaičių teksto dalyje ir grąžina NaN.<br>
+</p>
+<h2>KINTAMIEJI ('variables')</h2>
+<p>
+//JS kode operandai paprastai yra ne konkrečios vertės, o kintamieji su priskirtomis vertėmis.<br>
+//Prieš pradedant naudoti kintamasis yra deklaruojamas raktažodžiais let, const, var ir jam suteikiamas pavadinimas. let ir var nurodo galimus kisti savo vertėmis kintamuosius, const vertė išlieka pastovi kodo eigoje arba kodo bloke. Kintamieji gali turėti bet kokią priskirtą vertę.<br>
+
+const PI = Math.PI.toFixed(4);//lygybės ženklas yra vertės priskyrimo simbolis.<br>
+console.log (PI);<br>
+//Pabandžius keisti const reikšmę, JS fiksuos klaidą.<br>
+//PI=5; -- Error<br>
+//Kintamųjų pavadinimai parenkami reikšminiais; let ir var kintamieji gali būti deklaruoti be verčių:<br>
+let kvadratoKraštinė = 4;<br>
+let kvadratoIstrizaine;<br>
+console.log (kvadratoKraštinė);<br>
+console.log (kvadratoIstrizaine);<br>
+kvadratoIstrizaine = kvadratoKraštinė*Math.sqrt(2);<br>
+console.log (kvadratoIstrizaine.toFixed (4));<br>
+//vienu metu galima deklaruoti keletą kintamųjų:<br>
+let kuboAukstis = 15, kuboPlotis = 6, kuboIlgis = 8;<br>
+console.log(kuboAukstis);<br>
+//Sukurkime kintamąjį, kuris rodytų kūbo tūrį:<br>
+let kuboTuris = kuboAukstis*kuboPlotis*kuboIlgis;<br>
+console.log (kuboTuris.toFixed (2));<br>
+//let kintamasis po to gali būti keičiamas be atskiros deklaracijos:<br>
+kuboAukstis = 12, kuboPlotis = 5, kuboIlgis = 6;<br>
+console.log(kuboAukstis);<br>
+kuboTuris = kuboAukstis*kuboPlotis*kuboIlgis;<br>
+console.log (kuboTuris.toFixed (2));<br>
+//JS draudžia paskelbti tokio pat pavadinimo kintamuosius let ir const, išskyrus naudojimą vaikiniuose blokuose.<br>
+//Kintamasis var yra iš senesnės nei ES6 JS versijos. Jo vertė persiduoda iš bloko ribų, o paskelbus bendrame bloke įgyja globalią vertę. Jį taip pat galima deklaruoti kelis kartus. Tame pačiame bloke galima naudoti var kintamąjį prieš jį deklaruojant. Šiuo metu JS var kintamieji nebenaudotini.<br>
+//Paskelbus kintamąjį be deklaracijos jis tampa globaliu kintamuoju ir yra vengtinas:<br>
+u = 3;<br>
+kuboTurisBlogas = kuboAukstis*kuboPlotis*kuboIlgis*u;<br>
+console.log (kuboTurisBlogas.toFixed (2));<br>
+//tokius kintamuosius galima ištrinti:<br>
+delete (u);<br>
+//kuboTurisBlogas = kuboAukstis*kuboPlotis*kuboIlgis*u; - klaida, u ištrintas.<br>
+delete (kuboTurisBlogas);<br>
+//console.log (kuboTurisBlogas); - klaida, kuboTurisBlogas ištrintas<br>
+//Tuo metu let ir const kintamųjų ištrinti JS neleidžia:<br>
+delete (PI);<br>
+console.log (PI);//ignoruotas delete (PI).<br>
+delete (kuboTuris);<br>
+console.log (kuboTuris);//ignoruotas delete (kuboTuris).<br>
+</p>
+</body>
+</html>
