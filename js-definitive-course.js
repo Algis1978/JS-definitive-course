@@ -151,14 +151,16 @@ console.log (Math.log (10)); //skaičiaus 10 natūralus logaritmas.
 console.log (Math.sqrt (16));//kvadratinė šaknis.
 console.log (Math.pow (2, 6));//pirmo argumento pakėlimas antro argumento laipsniu.
 console.log (Math.pow (64, 1/6));//antro argumento šaknis pirmam argumentui.
-console.log (Math.sin(0.52359878)); // logaritminės funkcijos, taip pat cos, tan, atan su radianinėmis vertėmis.
+console.log (Math.sin (0.52359878)); // logaritminės funkcijos, taip pat cos, tan, atan su radianinėmis vertėmis.
+console.log (Math.max ("a", "b", "c")); // grąžina didžiausią argumento vertę.
+console.log (Math.min ("a", "b", "c")); // grąžina mažiausią argumento vertę.
 
 console.log("SKAIČIŲ FUNKCIJOS")
 //dalijimas iš nulio grąžina 'Infinity' vertę.
 console.log (10/0);
 //nulio dalijimas iš nulio grąžina NaN vertę.
 console.log (0/0);
-console.log (Number.isNaN(NaN));//patikrinimas ar argumentas nėra skaičius.
+console.log (Number.isNaN(NaN));//patikrinimas ar argumentas yra NaN vertė.
 console.log (Number.isInteger(10));//patikrinimas ar argumentas yra sveikasis skaičius.
 console.log (Number.isInteger(10.1));
 console.log (Number.isFinite(10));//patikrinimas ar argumentas yra JS skaičius.
