@@ -6,7 +6,7 @@ console.log ("ĮŽANGA");
 //Naršyklės konsolės langas supranta tik vienos eilutės operacijas, tad juo parašyti didesnes programas yra sudėtinga. Tam naudojami programavimo redaktoriai: Atom, Notepad++, VSCode, Sublime ir kt.
 //Pamatyti šiose programose veikiantį JS kodą galima susiejus vykdomą .js bylą su naršyklės aktyviuoju puslapiu (.html byla) tame pačiame konsolės lange arba instaliavus Node.js paketą, kuris pavaizduoja veikiantį JS kodą reaktoriaus 'Terminal' lange. 
 //Programuojant reikia surinkti daug pasikartojančių tektų ir tam padeda Emmet programinis tekstų nuspėjimo įrankis, kuris, renkant tekstą, automatiškai parodo artimus pasirinkimo variantus.
-//Susipažinimui su JS programavimu pilna tinka internetiniai ('online') redaktoriai.
+//Susipažinimui su JS programavimu pilnai tinka internetiniai ('online') redaktoriai.
 
 console.log ("ĮVADAS");
 //JS kodas, galintis grąžinti rezultatą, vadinamas ekspresija, tad '2+3' ir '5<2' yra ekspresijos. Duomenys, kuriais manipuliuoja JS, suskirstyti į tipus: tai skaičiai, tekstai, objektai, masyvai ir kt. 
@@ -175,7 +175,7 @@ console.log (Math.sin (0.52359878)); // logaritminės funkcijos, taip pat cos, t
 console.log (Math.max ("a", "b", "c")); // grąžina didžiausią argumento vertę.
 console.log (Math.min ("a", "b", "c")); // grąžina mažiausią argumento vertę.
 
-console.log("SKAIČIŲ FUNKCIJOS")
+console.log("SKAIČIŲ METODAI")
 //dalijimas iš nulio grąžina 'Infinity' vertę.
 console.log (10/0);
 //nulio dalijimas iš nulio grąžina NaN vertę.
@@ -292,18 +292,18 @@ h = function (data) {
 }
 console.log (h (5));
 
-console.log ("PAPRASTOSIOS IR SUDĖTINĖS VERTĖS")
+console.log ("PAPRASTOSIOS IR OBEJKTŲ VERTĖS")
 //Paprastosiomis vertėmis vadinamos nekeičiamos vertės: skaičiai, tekstai, boolean ir spec. vertės.
-// Sudėtinės vertės: objektai, masyvai, funkcijos.
+// Objektų vertės: objektai, masyvai, funkcijos.
 
-//Operacijų metu naudojamos paprastosios vertės, kai sudėtinių verčių aveju - nuorodos į tas vertes.
+//Operacijų metu naudojamos paprastosios vertės, kai objektų verčių aveju - nuorodos į tas vertes.
 //Pavyzdys 1:
 let tekstas1 = "vienas";
 let tekstas2 = "vienas";
 console.log (tekstas1===tekstas2);//true, nes lyginamos vertės, kurios yra vienodos.
 let masyvas1 = [1, 2, 3, 4];
 let masyvas2 = [1, 2, 3, 4];
-console.log (masyvas1===masyvas2);//flse, nes lyginamos nuorodos, kurios skirtingos.
+console.log (masyvas1===masyvas2);//false, nes lyginamos nuorodos, kurios skirtingos.
 //Pavyzdys 2 su tekstu:
 console.log (tekstas1);
 tekstas1.replace ("vien", "kiem");
@@ -322,7 +322,7 @@ console.log (masyvas1);
 console.log (masyvas3);//savybės 0 pasikeitė objekte, į kurį nurodo masyvas1 ir masyvas2.
 
 console.log ("PAPRASTŲJŲ VERČIŲ TIPŲ KEITIMAS")
-//vykdant veiksmus JS automatiškai keičia operandų tipus priklausomai nuo konteksto:
+//Vykdant veiksmus JS automatiškai keičia operandų tipus priklausomai nuo konteksto:
 h = 2 * "3";
 console.log (h);//atpažinęs matematinį operatorių, išskyrus +, JS stengsis pakeisti tekstą į skaičių. 
 h = "12"/"3";
@@ -347,7 +347,7 @@ console.log(Boolean(0));
 console.log(Boolean(Infinity));
 
 console.log ("PAPRASTŲJŲ VERČIŲ KEITIMO METODAI IR FUNKCIJOS")
-//toString metodas leidžia konvertuoti atsižvelgiant į skaičiaus bazę:
+//toString metodas leidžia konvertuoti skaičius atsižvelgiant į bazę:
 h = 100;
 console.log (h.toString (10));//dešimtainis kodas.
 console.log ("0b" + h.toString (2));//binarinis kodas.
@@ -362,10 +362,10 @@ console.log (h.toExponential (3));//palieka 1 sveikąjį ir 3 skaičius po kable
 console.log (h.toPrecision (7));//užrašo tik norimą kiekį skaičiaus ženklų, šiuo aveju septynis.
 //PASTABA. Šios funkcijos suapvalina skaičius (paskutinis atvejis).
 
-//Funkcijos parseInt ir parseFloat stengsis pakeisti visus įmanomus tekstų simbolius skaičiais:
+//Funkcijos parseInt ir parseFloat stengsis pakeisti tekstų simbolius skaičiais:
 console.log (parseInt ("6.87"));//parseInt grąžina sveikuosius skaičius.
 console.log (parseInt ("0xFA3"));//funkcijos keičia heksa skaičius į dešimtainius.
-console.log (parseInt ("01001", 2));//su nurodyta baze (antruoju argumentu) parseInt kovrtuoja skaičius į dešimtainius.
+console.log (parseInt ("01001", 2));//su nurodyta baze (antruoju argumentu) parseInt kovertuoja skaičius į dešimtainius.
 console.log (parseFloat ("6.87"));//parseFloat grąžina skaičius su trupmenine dalimi.
 console.log (parseFloat ("3.14true"));//funkcijos grąžina skaičių, jei jis yra teksto priekyje.
 console.log (parseFloat ("true 3.14"));//funkcijos nesupranta skaičių teksto dalyje ir grąžina NaN.
@@ -388,10 +388,10 @@ console.log (kvadratoIstrizaine.toFixed (4));
 //vienu metu galima deklaruoti keletą kintamųjų:
 let kuboAukstis = 15, kuboPlotis = 6, kuboIlgis = 8;
 console.log(kuboAukstis);
-//Sukurkime kintamąjį, kuris rodytų kūbo tūrį:
+//Sukurkime kintamąjį, kuris apskaičiuotų kūbo tūrį:
 let kuboTuris = kuboAukstis*kuboPlotis*kuboIlgis;
 console.log (kuboTuris.toFixed (2));
-//let kintamasis po to gali būti keičiamas be atskiros deklaracijos:
+//let kintamasis tame pačiame bloke po to gali būti keičiamas be atskiros deklaracijos:
 kuboAukstis = 12, kuboPlotis = 5, kuboIlgis = 6;
 console.log(kuboAukstis);
 kuboTuris = kuboAukstis*kuboPlotis*kuboIlgis;
