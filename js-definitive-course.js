@@ -1,3 +1,23 @@
+console.log ("ĮŽANGA");
+//Javascript - objektinio programavimo kalba, dažniausiai naudojama vartotojo interaktyvioje sąsajoje WWW puslapiuose. Pirmą kartą standartizuota 1997 m., oficialiau žinoma ECMAscript pavadinimu pagal ECMA - Europos kompiuterinės įrangos gamintojų asociacijos, kuri įvedė JS standartą, pavadinimą.
+//Vienas iš didžiausių pakeitimų JS standarte įvyko 2015 m. Po to galiojanti JS redakcija paprastai vadinama ES6 versija, nors atnaujinama bemaž kasmet.
+// Paprasčiausiai Javascript išbandyti galima iššaukus interneto naršyklėje 'Developer Tools' langą per F12 arba Ctrl+Shift+I. Po to atsidariusiame lange pasirinkti 'Console' skirtuką. 
+//Parašius konsolės eilutėje JS suprantamą operaciją ir nuspaudus 'Enter' galima pamatyti JS veikimą. Pvz., parašykite: 'l=2+3' ir 'Enter' arba 'k=[1, 2, 3, 4]' ir 'Enter'. 
+//Naršyklės konsolės langas supranta tik vienos eilutės operacijas, tad juo parašyti didesnes programas yra sudėtinga. Tam naudojami programavimo redaktoriai: Atom, Notepad++, VSCode, Sublime ir kt.
+//Pamatyti šiose programose veikiantį JS kodą galima susiejus vykdomą .js bylą su naršyklės aktyviuoju puslapiu (.html byla) tame pačiame konsolės lange arba instaliavus Node.js paketą, kuris pavaizduoja veikiantį JS kodą reaktoriaus 'Terminal' lange. 
+//Programuojant reikia surinkti daug pasikartojančių tektų ir tam padeda Emmet programinis tekstų nuspėjimo įrankis, kuris, renkant tekstą, automatiškai parodo artimus pasirinkimo variantus.
+//Susipažinimui su JS programavimu pilna tinka internetiniai ('online') redaktoriai.
+
+console.log ("ĮVADAS");
+//JS kodas, galintis grąžinti rezultatą, vadinamas ekspresija, tad '2+3' ir '5<2' yra ekspresijos. Duomenys, kuriais manipuliuoja JS, suskirstyti į tipus: tai skaičiai, tekstai, objektai, masyvai ir kt. 
+//Duomenys jungiami tarpusavyje operatoriais, kurių paprasčiausi yra matematiniai sudėties, daugybos ir kt. veiksmai. Operatoriais sujungti duomenys yra ekspresijos. 
+//Platesnis JS kodas, kuris nustato, kaip panaudojamos ekspresijos, vadinamos steitmentais. Paprasčiausias steitmentas - tai priskirti ekspresiją kintamajam, pvz., 'l=2+3'. 
+//Rašant kodą galima įvesti jo veikimą paaiškinančius komentarus, kiekvieno jo priekyje įvedant du // simbolius.
+//JS sintaksė ignoruoja tarpus ir tuščias eilutes tarp kodo elementų ir beveik visada ignoruoja kodo eilučių laužtes. JS reaguoja į skirtumus tarp mažųjų ir didžiųjų raidžių, be to, specialūs JS žodžiai yra nepanaudojami kitoms, nei jiems rezervuotoms, prasmėms, tad 'let' nėra tapatus 'Let'.
+//JS kodo identifikaciniai tekstai (pavadinimai) paprastai pradedami mažosiomis raidėmis, draudžiama juos pradėti skaitmenų ir kitokiais specialiais simboliais, išskyrus _ ir &.
+//JS kodas leidžia naudoti ne anglų kalbos simbolius pavadinimuose, bet juos naudojant gali kili problemų senose sistemose, tad JS leidžia naudoti UNICODE simbolių kodavimą.
+//Steitmentams atskirti JS naudojamas kabliataškio simbolis steitmento pabaigoje, bet jis nėra būtinas, jei įvedama eilutės laužtė. Išskyrus kai kuriuos atvejus, pvz., kai steitmentas pradedamas spec. simboliais, prieš tikėtiną kompiliatoriaus sumaišyti steitmentą verta padėti ;, taip atskiriant naują steitmentą nuo prieš tai buvusio.
+//Išimtys: simboliai --, ++ ir => neskiriami ir turi būti toje pačioje eilutėje su argumentais, return, throw, yield, break, continue steitmentai tęsiami toje pačioje eilutėje.
 console.log ("OBJEKTAI");
 //Objektas - duomenų porų 'pavadinimas:vertė' rinkinys.
 //Objekto sukūrimas per let, const ir var kintamuosius:
