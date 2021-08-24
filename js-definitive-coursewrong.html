@@ -19,83 +19,12 @@
 </head>
 <body>
     <script src="./js-definitive-course.js"></script>
-    
+<h1>TURINYS</h1>
+<h2>ĮŽANGA/h2>
+<h2>ĮVADAS</h2>
 <h2>OBJEKTAI</h2>
-<p>
-//Objektas - duomenų porų 'pavadinimas:vertė' rinkinys.<br>
-//Objekto sukūrimas per let, const ir var kintamuosius:<br>
-let knyga = {<br>
-    autorius: "V. M. Tekerėjus",<br>
-    puslapiuSkaicius: 823,<br>
-};//objektas yra tarp {skliaustų}.<br>
-console.log(knyga);<br>
-//Objekto savybių pasiekimas:<br>
-knyga.autorius<br>
-console.log(knyga.autorius);<br>
-console.log(knyga["puslapiuSkaicius"]);<br>
-//Nesančių savybių iškvietimas (grąžins 'undefined'):<br>
-console.log(knyga.turinys);<br>
-//Objekto tekstinio pavadinimo savybės įvedimas:<br>
-knyga.pavadinimas = "Tuštybės mugė";<br>
-knyga.ISBN = "123-3234-345";<br>
-//Skaitinio pavadinimo savybės įvedimas:<br>
-knyga[100] = "kodas";<br>
-//Tuščios savybės įvedimas:<br>
-knyga.turinys = {};<br>
-console.log(knyga);<br>
-console.log(knyga.turinys);<br>
-</p>
 <h2>MASYVAI (arrays)</h2>
-<p>
-//Masyvai - numeruotų duomenų rinkiniai.<br>
-//Masyvų sukūrimas:<br>
-let gatvesNamuNumeriai = [1, 2, 3, 4, 5, 7, 9];//masyvas yra tarp [skliaustų].<br>
-console.log (gatvesNamuNumeriai);<br>
-//Masyvų elementai sunumeruoti, pradedant 0:<br>
-console.log (gatvesNamuNumeriai[2]);<br>
-//Masyvo elementų eilutės ilgis pasiekiamas per .length raktažodį:<br>
-console.log (gatvesNamuNumeriai.length);<br>
-//Pakutinio masyvo elemento pasiekimas:<br>
-console.log (gatvesNamuNumeriai[gatvesNamuNumeriai.length-1]);<br>
-//Masyvo elementų įvedimas arba keitimas:<br>
-gatvesNamuNumeriai[0]=23;<br>
-console.log (gatvesNamuNumeriai[0]);<br>
-//Galima įvesti į masyvą aukštesnio eilės skaičiaus elementus:<br>
-gatvesNamuNumeriai[10]=25;<br>
-console.log (gatvesNamuNumeriai[10]);<br>
-console.log (gatvesNamuNumeriai[9]);<br>
-console.log (gatvesNamuNumeriai.length);<br>
-// Tekstas turi masyvo savybių: - ilgį, simbolio numerį:<br>
-let z = "visada";<br>
-console.log (z.length); //teksto ilgis.<br>
-console.log (z[3]); //ketvirta raidė tekste.<br>
-
-//Tiek objektai, tiek masyvai gali būti tušti:<br>
-const tusciasObjektas = {};<br>
-const tusciasMasyvas = [];<br>
-console.log (tusciasObjektas);<br>
-console.log (tusciasMasyvas);<br>
-//Tiek objektai, tiek masyvai savo sudėtyje gali turėti kitus objektus ir masyvus.<br>
-</p>
 <h2>MATEMATINIAI OPERATORIAI</h2>
-<p>
-//Operatoriai - integruoti JS veiksmai su vertėmis (operandais).<br>
-//Matematiniai operatoriai +, -, /, *, ** (kėlimas laipsniu), % (grąžina dalybos liekaną);<br>
-//sutrumpinti matematiniai operatoriai:<br>
-let skaicius = 7;<br>
-skaicius++; //prideda vienetą.<br>
-console.log(skaicius);<br>
-skaicius--; //atima vienetą.<br>
-console.log(skaicius);<br>
-skaicius += 3; //prideda 3.<br>
-console.log(skaicius);<br>
-skaicius -= 4; //atima 4.<br>
-console.log(skaicius);<br>
-skaicius *= 4; //padaugina iš 4.<br>
-console.log(skaicius);<br>
-skaicius /= 3; //padalija iš 3.<br>
-console.log(skaicius);<br>
-</p>
 <h2>PALYGINIMO OPERATORIAI</h2>
 <p>
 //Palyginimo operatorių veiksmai gražina boolean vertes 'true'(teisinga) ir 'false' (neteisinga).<br>

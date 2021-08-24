@@ -1,5 +1,5 @@
 console.log ("ĮŽANGA");
-//Javascript - objektinio programavimo kalba, dažniausiai naudojama vartotojo interaktyvioje sąsajoje WWW puslapiuose. Pirmą kartą standartizuota 1997 m., oficialiau žinoma ECMAscript pavadinimu pagal ECMA - Europos kompiuterinės įrangos gamintojų asociacijos, kuri įvedė JS standartą, pavadinimą.
+//Javascript - objektinio programavimo kalba, dažniausiai naudojama vartotojo interaktyvioje sąsajoje WWW puslapiuose. Pirmą kartą standartizuota 1997 m. Oficialiau žinoma ECMAscript pavadinimu pagal ECMA - Europos kompiuterinės įrangos gamintojų asociacijos, kuri įvedė JS standartą, pavadinimą.
 //Vienas iš didžiausių pakeitimų JS standarte įvyko 2015 m. Po to galiojanti JS redakcija paprastai vadinama ES6 versija, nors atnaujinama bemaž kasmet.
 // Paprasčiausiai Javascript išbandyti galima iššaukus interneto naršyklėje 'Developer Tools' langą per F12 arba Ctrl+Shift+I. Po to atsidariusiame lange pasirinkti 'Console' skirtuką. 
 //Parašius konsolės eilutėje JS suprantamą operaciją ir nuspaudus 'Enter' galima pamatyti JS veikimą. Pvz., parašykite: 'l=2+3' ir 'Enter' arba 'k=[1, 2, 3, 4]' ir 'Enter'. 
@@ -7,17 +7,18 @@ console.log ("ĮŽANGA");
 //Pamatyti šiose programose veikiantį JS kodą galima susiejus vykdomą .js bylą su naršyklės aktyviuoju puslapiu (.html byla) tame pačiame konsolės lange arba instaliavus Node.js paketą, kuris pavaizduoja veikiantį JS kodą reaktoriaus 'Terminal' lange. 
 //Programuojant reikia surinkti daug pasikartojančių tektų ir tam padeda Emmet programinis tekstų nuspėjimo įrankis, kuris, renkant tekstą, automatiškai parodo artimus pasirinkimo variantus.
 //Susipažinimui su JS programavimu pilnai tinka internetiniai ('online') redaktoriai.
-
-console.log ("ĮVADAS");
 //JS kodas, galintis grąžinti rezultatą, vadinamas ekspresija, tad '2+3' ir '5<2' yra ekspresijos. Duomenys, kuriais manipuliuoja JS, suskirstyti į tipus: tai skaičiai, tekstai, objektai, masyvai ir kt. 
-//Duomenys jungiami tarpusavyje operatoriais, kurių paprasčiausi yra matematiniai sudėties, daugybos ir kt. veiksmai. Operatoriais sujungti duomenys yra ekspresijos. 
-//Platesnis JS kodas, kuris nustato, kaip panaudojamos ekspresijos, vadinamos steitmentais. Paprasčiausias steitmentas - tai priskirti ekspresiją kintamajam, pvz., 'l=2+3'. 
-//Rašant kodą galima įvesti jo veikimą paaiškinančius komentarus, kiekvieno jo priekyje įvedant du // simbolius.
-//JS sintaksė ignoruoja tarpus ir tuščias eilutes tarp kodo elementų ir beveik visada ignoruoja kodo eilučių laužtes. JS reaguoja į skirtumus tarp mažųjų ir didžiųjų raidžių, be to, specialūs JS žodžiai yra nepanaudojami kitoms, nei jiems rezervuotoms, prasmėms, tad 'let' nėra tapatus 'Let'.
-//JS kodo identifikaciniai tekstai (pavadinimai) paprastai pradedami mažosiomis raidėmis, draudžiama juos pradėti skaitmenų ir kitokiais specialiais simboliais, išskyrus _ ir &.
-//JS kodas leidžia naudoti ne anglų kalbos simbolius pavadinimuose, bet juos naudojant gali kili problemų senose sistemose, tad JS leidžia naudoti UNICODE simbolių kodavimą.
-//Steitmentams atskirti JS naudojamas kabliataškio simbolis steitmento pabaigoje, bet jis nėra būtinas, jei įvedama eilutės laužtė. Išskyrus kai kuriuos atvejus, pvz., kai steitmentas pradedamas spec. simboliais, prieš tikėtiną kompiliatoriaus sumaišyti steitmentą verta padėti ;, taip atskiriant naują steitmentą nuo prieš tai buvusio.
-//Išimtys: simboliai --, ++ ir => neskiriami ir turi būti toje pačioje eilutėje su argumentais, return, throw, yield, break, continue steitmentai tęsiami toje pačioje eilutėje.
+//Duomenys jungiami tarpusavyje operatoriais, kurių paprasčiausi yra matematiniai sudėties, daugybos ir kt. veiksmai. Operatoriais sujungti duomenys vadinami operandais. 
+//Platesnis JS kodas, kuris nustato, kaip panaudojamos ekspresijos, vadinamos steitmentais. Paprasčiausias steitmentas - kintamajam priskirta ekspresija, pvz., 'l=2+3'.
+
+console.log ("SINTAKSĖ"); 
+//Rašant kodą galima įvesti jo veikimą paaiškinančius komentarus, kiekvieno jo priekyje įvedant du // simbolius. Komentarų informacija vykdant programą visiškai ignoruojama.
+//JS sintaksė ignoruoja tarpus ir tuščias eilutes tarp kodo elementų ir beveik visada ignoruoja kodo eilučių laužtes. JS reaguoja į skirtumus tarp mažųjų ir didžiųjų raidžių. Specialūs JS žodžiai yra nepanaudojami kitoms, nei jiems rezervuotoms, prasmėms, tad 'let' nėra tapatus 'Let' ir negalim panaudoti 'let' kitkam nei kintamojo deklaracijai.
+//JS kodo pavadinimų tekstai paprastai pradedami mažosiomis raidėmis. Draudžiama juos pradėti skaitmenų ir specialiais simboliais, išskyrus _ ir &.
+//JS kodas leidžia naudoti ne anglų kalbos simbolius pavadinimuose, bet juos naudojant gali kilti problemų senose sistemose, ir JS leidžia naudoti UNICODE simbolių kodavimą.
+//Steitmentams atskirti JS naudojamas kabliataškio simbolis steitmento pabaigoje, bet jis nėra būtinas, jei įvedama eilutės laužtė. Išskyrus kai kuriuos atvejus, pvz., kai steitmentas pradedamas spec. simboliais, prieš tikėtiną kompiliatoriaus sumaišyti steitmentą verta padėti ';', taip atskiriant naują steitmentą nuo prieš tai buvusio.
+//Išimtys: simboliai --, ++ ir => neskiriami ir turi būti toje pačioje eilutėje su argumentais, 'return, throw, yield, break, continue' steitmentai tęsiami toje pačioje eilutėje.
+
 console.log ("OBJEKTAI");
 //Objektas - duomenų porų 'pavadinimas:vertė' rinkinys.
 //Objekto sukūrimas per let, const ir var kintamuosius:
@@ -25,9 +26,11 @@ let knyga = {
     autorius: "V. M. Tekerėjus",
     puslapiuSkaicius: 823,
 };//objektas yra tarp {skliaustų}.
+//Objekto duomenų pavaizdavima konsolėje:
 console.log(knyga);
-//Objekto savybių pasiekimas:
+//Objekto atskirų savybių pasiekimas:
 knyga.autorius
+//Pavaizdavimas konsolėje:
 console.log(knyga.autorius);
 console.log(knyga["puslapiuSkaicius"]);
 //Nesančių savybių iškvietimas (grąžins 'undefined'):
@@ -47,7 +50,7 @@ console.log ("MASYVAI (arrays)");
 //Masyvų sukūrimas:
 let gatvesNamuNumeriai = [1, 2, 3, 4, 5, 7, 9];//masyvas yra tarp [skliaustų].
 console.log (gatvesNamuNumeriai);
-//Masyvų elementai sunumeruoti, pradedant 0:
+//Masyvų elementai sunumeruotip radedant 0 (nuline) pozicija:
 console.log (gatvesNamuNumeriai[2]);
 //Masyvo elementų eilutės ilgis pasiekiamas per .length raktažodį:
 console.log (gatvesNamuNumeriai.length);
@@ -93,9 +96,9 @@ console.log(skaicius);
 
 console.log ("PALYGINIMO OPERATORIAI");
 //Palyginimo operatorių veiksmai gražina boolean vertes 'true'(teisinga) ir 'false' (neteisinga).
-let x = 10, y = 5;
+let x = 10, y = 5; // = yra kintamojo deklaracijos simbolis, === yra griežtos lygybės operatorius, == yra negriežtos lygybės operatorius. 
 console.log (x===y); //false.
-console.log (x!==y); //true.
+console.log (x!==y); //true. !== yra griežtai nelygu, != yra negriežtai nelygu operatoriai.
 console.log (x < y); //false.
 console.log (x <= y); //false.
 console.log (x > y); //true.
@@ -126,24 +129,24 @@ let m = function atimamVieneta (k) {
 }
 console.log(m (10));
 //Funkcija gali būti kitos funkcijos argumentu.
-console.log (m(pridedamVieneta (5))); //prideda vienetą ir po to m atima vienetą.
+console.log (m(pridedamVieneta (5))); //prideda vienetą ir po to atima vienetą.
 //Rodyklinės funkcijos daugiausiai skirtos perduoti bevardę funkciją vietoj argumento kitai funkcijai.
-let l = k => k + 1;
+let l = m => m + 10;
 //kintamojo l funkcijos argumentas k perduodamas operacijai k + 1.
-console.log (l(15));
+console.log (l(m (11)));
 
 console.log ("METODAI");
-//Metodais vadinamos funkcijos, priskirtos objektų ir masyvų savybėms.
+//Metodais vadinamos funkcijos, priskirtos duomenų tipų (objektų, skaičių ir kt.) savybėms.
 //Pagal nutylėjimą globalūs metodai priskirti objekto ir masyvo prototipo objektui:
 let masyvas = [1, 2, 3, 4, 5, 6, 7]
-//Pvz., funkcija 'reverse' perkeis elementų išdėstymą atbuline tvarka.
+//Pvz., metodas 'reverse' perkeis masyvo elementų išdėstymą atbuline tvarka.
 masyvas.reverse()
 console.log (masyvas);
-//Funkcija 'push' pridės naujus elementus.
+//Metodas 'push' pridės naujus elementus.
 masyvas.push (8, 9, 10)
 console.log (masyvas);
 //Objektų ir masyvų prototipų metodai nėra tapatūs.
-//Savo susikurtą funkciją galima įvesti tarp objekto ir masyvo savybių.
+//Savo susikurtą funkciją galima įvesti tarp objekto ir masyvo metodų.
 //Pavyzdžiu panaudojam objektą 'knyga1'.
 let knyga1 = {
     autorius: "V. M. Tekerėjus",
@@ -187,7 +190,7 @@ console.log (Number.isFinite(10));//patikrinimas ar argumentas yra JS skaičius.
 console.log (Number.parseInt ("12.8"));//pakeičia tekstą sveikuoju skaičiu.
 console.log (Number.parseFloat ("12.3"));//pakeičia tekstą skaičiumi įskaitant trupmeninę dalį.
 
-console.log("DATA")
+console.log("DATOS")
 let dabar = Date.now ();//grąžina laiką milisekundėmis nuo 1970 m. kažkada.
 console.log(dabar);
 dabar = new Date (); // grąžiną dabartinį komp. laiką anglišku formatu.
@@ -227,8 +230,8 @@ console.log ("TEKSTŲ METODAI");
 console.log ("vienas".substring (1, 4));//teksto fragmentas.
 console.log ("vienas".slice (-2));//paskutiniai du simboliai.
 console.log ("vienas du".split (" "));//perkerta į du tekstus.
-console.log ("vienas kiemas".indexOf ("e"));//pirma simbolio pozicija.
-console.log ("vienas kiemas".indexOf ("e", 3));//pirma simbolio pozicija po antros pozicijos.
+console.log ("vienas kiemas".indexOf ("e"));//pirma argumento simbolio pozicija.
+console.log ("vienas kiemas".indexOf ("e", 3));//pirma argumento simbolio pozicija po antros pozicijos.
 console.log ("vienas kiemas".indexOf ("u", 3));//jei simbolių nėra, grąžinamas -1. 
 console.log ("vienas kiemas".indexOf ("kie", 3));//galioja ir simbolių kombinacijom.
 console.log ("vienas".startsWith ("k"));//patikrina, ar argumetu prasideda.
@@ -237,7 +240,7 @@ console.log ("vienas".includes ("ena"));//patikrina, ar yra argumentas.
 console.log ("vienas".replace ("vien", "kiem"));//pakeičia pirmą argumentą antru.
 console.log ("VieNas".toLowerCase ());//tik mažosios raidės.
 console.log ("VieNas".toUpperCase ());//tik didžiosios raidės. 
-console.log ("vienas".charAt (1));//grąžina simbolį argumento pozicijoje.
+console.log ("vienas".charAt (1));//grąžina simbolį argumento eilės pozicijoje.
 console.log ("vienas".charAt ("vienas".length-1));//grąžina paskutinį simbolį.
 console.log ("vienas"[1]);//tas pats traktuojant tekstą kaip masyvą.
 console.log ("vienas"["vienas".length-1]);
@@ -256,7 +259,7 @@ console.log (`Skaičių 8
 padauginsiu iš ${penki} 
 ir gausiu ${padaugintaIsPenkiu (8)}.`)
 
-console.log ("SPECIALIOS VERTĖS");
+console.log ("SPECIALIOSIOS VERTĖS");
 //NaN - nurodo skaitinės vertės nebuvimą:
 let h = 4 * "a";
 console.log (h);
@@ -292,7 +295,7 @@ h = function (data) {
 }
 console.log (h (5));
 
-console.log ("PAPRASTOSIOS IR OBEJKTŲ VERTĖS")
+console.log ("PAPRASTOSIOS IR OBJEKTŲ VERTĖS")
 //Paprastosiomis vertėmis vadinamos nekeičiamos vertės: skaičiai, tekstai, boolean ir spec. vertės.
 // Objektų vertės: objektai, masyvai, funkcijos.
 
@@ -303,7 +306,7 @@ let tekstas2 = "vienas";
 console.log (tekstas1===tekstas2);//true, nes lyginamos vertės, kurios yra vienodos.
 let masyvas1 = [1, 2, 3, 4];
 let masyvas2 = [1, 2, 3, 4];
-console.log (masyvas1===masyvas2);//false, nes lyginamos nuorodos, kurios skirtingos.
+console.log (masyvas1===masyvas2);//false, nes lyginamos nuorodos, kurios skirtingos (veda į skirtingus objektus).
 //Pavyzdys 2 su tekstu:
 console.log (tekstas1);
 tekstas1.replace ("vien", "kiem");
@@ -321,7 +324,7 @@ masyvas3[0]=15;
 console.log (masyvas1);
 console.log (masyvas3);//savybės 0 pasikeitė objekte, į kurį nurodo masyvas1 ir masyvas2.
 
-console.log ("PAPRASTŲJŲ VERČIŲ TIPŲ KEITIMAS")
+console.log ("PAPRASTŲJŲ VERČIŲ AUTOMATINIS TIPŲ KEITIMAS")
 //Vykdant veiksmus JS automatiškai keičia operandų tipus priklausomai nuo konteksto:
 h = 2 * "3";
 console.log (h);//atpažinęs matematinį operatorių, išskyrus +, JS stengsis pakeisti tekstą į skaičių. 
