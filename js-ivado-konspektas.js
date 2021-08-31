@@ -126,12 +126,13 @@ console.log (!(x!==y)); //false (apverstas 1 true).
 
 console.log ("FUNKCIJOS");
 //Funkcija - kodo segmentas, kurį galima iššaukti kelis kartus vėliau kode.
-//Pradedama raktažožiu 'function', po to seka 'pavadinimas', ('argumentas'), {'operacijos blokas'}.
+//Pradedama raktažožiu 'function', po to seka 'pavadinimas', ('parametras(-ai)'), {'operacijos blokas'}.
 function pridedamVieneta (k){
     return k+1
 }
 //'return' raktažodis grąžina funkcijos operacijos rezultatą.
 console.log (pridedamVieneta (10));
+//Funkcijos apraše k vadinamas parametru. Konkrečios vertės, su kuriomis iššaukiamos funkcijos (pastaruoju atveju 10), vadinamos argumentais.
 //Funkcija gali būti priskirta kintamajam:
 let m = function atimamVieneta (k) {
     return k-1
