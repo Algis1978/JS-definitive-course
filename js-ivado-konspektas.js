@@ -112,13 +112,18 @@ console.log (x < y); //false.
 console.log (x <= y); //false.
 console.log (x > y); //true.
 console.log (x >= y); //true.
-console.log ("taip"==="ne"); //false.
+//Operatoriai > < >= <= ir == palyginime atlieka duomenų tipo pakeitimą, jei tai įmanoma.
+console.log ("3" > 2); //true.
+console.log ("2"==2); //true.
+//Operatorius === palygina tiek vertės, tiek duomenų tipo atitikimą.
+console.log ("2"===2); //false.
 console.log ("taip"==="taip"); //true.
 console.log (false === (x===y)); //true, apversta vertė.
 
 console.log ("LOGINIAI OPERATORIAI");
 // Loginiai operatoriai && - ir, || - ar, ! - priešingai,
 //naudojami su boolean vertėmis.
+console.log ("2"!=2); //false.
 console.log ((x!==y)&&(x > y)); //true (2 true).
 console.log ((x!==y)&&(x <= y)); //false (1 true, 1 false).
 console.log ((x!==y)||(x <= y)); //true (1 true, 1 false).
@@ -317,10 +322,16 @@ h = function (data) {
 }
 console.log (h (5));
 
-console.log ("PAPRASTOSIOS IR OBJEKTŲ VERTĖS")
-//Paprastosiomis vertėmis vadinamos nekeičiamos vertės: skaičiai, tekstai, boolean ir spec. vertės.
-// Objektų vertės: objektai, masyvai, funkcijos.
-
+console.log ("PAPRASTIEJI IR OBJEKTŲ TIPAI")
+//Paprastaisiais duomenų tipais vadinami tipai su nekeičiamomis vertėmis: skaičiai, tekstai, boolean ir spec. vertės.
+// Objektų tipai: objektai, masyvai, funkcijos, kurių duomenys gali būti keičiami.
+// Išimtys: null, kuris yra objektas, ir undefined, kurio tipas yra unefined (nežinomas).
+// Duomenų tipą galima pasitikrinti operatoriumi typeof:
+console.log(typeof "12");
+console.log(typeof ["12", 15]);
+console.log(typeof false);
+console.log(typeof null);
+console.log(typeof undefined);
 //Operacijų metu naudojamos paprastosios vertės, kai objektų verčių aveju - nuorodos į tas vertes.
 //Pavyzdys 1:
 let tekstas1 = "vienas";
@@ -452,8 +463,10 @@ let autoriausSavybe2 = Symbol ("autorius")
 knyga[autoriausSavybe2] = "V. M. Tekerėjus"
 //Tačiau šios savybės nebus tapačios:
 console.log(autoriausSavybe===autoriausSavybe2) //grąžina false.
-//Reguliariosios ekspresijos, trumpiau - RegExp, yra tekstinių duomenų tipas, skirtas ieškoti ir keisti pasikartojančias tekstines struktūras (angl. pattern).
+console.log(typeof autoriausSavybe);
+//Reguliariosios ekspresijos, trumpiau - RegExp, yra objektinis tekstinių duomenų tipas, skirtas ieškoti ir keisti pasikartojančias tekstines struktūras (angl. pattern).
 //RegExp duomuo užrašomas tarp dviejų // ženklų. Po to gali sekti papildomas ženklas ar ženklai, patikslinantys teksto panaudojimą.
+console.log(typeof /gpb/);
 
 console.log ("DESTRUKTŪRIZACIJA")
 //Destruktūrizacija yra tam tikra kintamojo arba funkcijos parametro deklaracija, paimant jį iš objektinių duomenų, objekto ar masyvo.
