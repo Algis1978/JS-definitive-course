@@ -1,14 +1,14 @@
 console.log ("ĮŽANGA");
 //Javascript - objektinio programavimo kalba, dažniausiai naudojama vartotojo interaktyvioje sąsajoje WWW puslapiuose. Pirmą kartą standartizuota 1997 m. Oficialiau žinoma ECMAscript pavadinimu pagal ECMA - Europos kompiuterinės įrangos gamintojų asociacijos, kuri įvedė JS standartą, pavadinimą.
-//Vienas iš didžiausių pakeitimų JS standarte įvyko 2015 m. Po to galiojanti JS redakcija paprastai vadinama ES6 versija, nors atnaujinama bemaž kasmet.
+//Vienas iš didžiausių pakeitimų JS standarte įvyko 2015 m. paverčiant JS visaverte programavimo kalba. Po to galiojanti JS redakcija paprastai vadinama „ES6 ir vėlesne“ versija ir atnaujinama bemaž kasmet.
 // Javascript programos 'hostai' yra interneto naršyklės ir nuo 2010 m. - Node.js serverių programa.
 // Paprasčiausiai Javascript išbandyti galima iššaukus interneto naršyklėje 'Developer Tools' langą per F12 arba Ctrl+Shift+I. Po to atsidariusiame lange pasirinkti 'Console' skirtuką. 
 //Parašius konsolės eilutėje JS suprantamą operaciją ir nuspaudus 'Enter' galima pamatyti JS veikimą. Pvz., parašykite: 'l=2+3' ir 'Enter' arba 'k=[1, 2, 3, 4]' ir 'Enter'. 
-//Naršyklės konsolės langas supranta tik vienos eilutės operacijas, tad juo parašyti didesnes programas yra sudėtinga. Tam naudojami programavimo redaktoriai: Atom, Notepad++, VSCode, Sublime ir kt.
+//Naršyklės konsolės langas supranta tik vienos eilutės operacijas, tad juo parašyti didesnes programas yra sudėtinga. Tam naudojami programavimo redaktoriai: Atom, Notepad++, VSCode, Sublime ir kt. Išsaugotos JS bylos turi .js pavadinimo paplėtimą.
 //Pamatyti šiose programose veikiantį JS kodą galima susiejus vykdomą .js bylą su naršyklės aktyviuoju puslapiu (.html byla) tame pačiame konsolės lange arba instaliavus Node.js paketą, kuris pavaizduoja veikiantį JS kodą reaktoriaus 'Terminal' lange. 
 //Programuojant reikia surinkti daug pasikartojančių tektų ir tam padeda Emmet programinis tekstų nuspėjimo įrankis, kuris, renkant tekstą, automatiškai parodo artimus pasirinkimo variantus.
 //Susipažinimui su JS programavimu pilnai tinka internetiniai ('online') redaktoriai.
-//JS kodas, galintis grąžinti rezultatą, vadinamas ekspresija, tad '2+3' ir '5<2' yra ekspresijos. Duomenys, kuriais manipuliuoja JS, suskirstyti į tipus: tai skaičiai, tekstai, objektai, masyvai, boolean'ai ir kt. 
+//JS kodas, galintis grąžinti rezultatą, vadinamas ekspresija, tad '2+3' ir '5<2' yra ekspresijos. Duomenys, kuriuos naudoja JS, suskirstyti į tipus. Tai skaičiai (Number), tekstai (String), objektai, masyvai (Array), patvirtinimo/paneigimo (Boolean) ir kt. 
 //Duomenys jungiami tarpusavyje operatoriais, kurių paprasčiausi yra matematiniai sudėties, daugybos ir kt. veiksmai. Operatoriais sujungti duomenys vadinami operandais. 
 //Platesnis JS kodas, kuris nustato, kaip panaudojamos ekspresijos, vadinamos steitmentais. Paprasčiausias steitmentas - kintamajam priskirta ekspresija, pvz., 'l=2+3'.
 
@@ -26,7 +26,8 @@ console.log ("100");
 //JS kodas leidžia naudoti ne anglų kalbos simbolius pavadinimuose, bet juos naudojant gali kilti problemų senose sistemose, ir JS leidžia naudoti UNICODE simbolių kodavimą.
 //Steitmentams atskirti JS naudojamas kabliataškio simbolis steitmento pabaigoje, bet jis nėra būtinas, jei įvedama eilutės laužtė. Išskyrus kai kuriuos atvejus, pvz., kai steitmentas pradedamas spec. simboliais, prieš tikėtiną kompiliatoriaus sumaišyti steitmentą verta padėti ';', taip atskiriant naują steitmentą nuo prieš tai buvusio.
 //Išimtys: simboliai --, ++ ir => neskiriami ir turi būti toje pačioje eilutėje su argumentais, 'return, throw, yield, break, continue' steitmentai tęsiami toje pačioje eilutėje.
-//Kodo suderinimui su ES6 ir vėlesniais standartais JS yra įvestas "use strict" tekstas. Įrašius šį tekstą JS bylos viršuje programa automatiškai fiksuos klaidą, kai panaudojama ankstesnio JS standarto sintaksė, pakeista ES6 stan
+//Kodo suderinimui su ES6 ir vėlesniais standartais JS yra įvestas "use strict" tekstas. Įrašius šį tekstą JS bylos viršuje programa automatiškai fiksuos klaidą, kai panaudojama ankstesnio JS standarto sintaksė, pakeista ES6 ir vėlesniam standarte. 'Use strict' panaudojus funkcijos bloke ji veiks tik tame bloke (angl. scope);
+
 console.log ("OBJEKTAI");
 //Objektas - duomenų porų 'pavadinimas:vertė' rinkinys.
 //Objekto sukūrimas per let, const ir var kintamuosius:
@@ -34,13 +35,13 @@ let knyga = {
     autorius: "V. M. Tekerėjus",
     puslapiuSkaicius: 823,
 };//objektas yra tarp {skliaustų}.
-//Objekto duomenų pavaizdavima konsolėje:
+//Objekto duomenų pavaizdavimas konsolėje:
 console.log(knyga);
 //Objekto atskirų savybių pasiekimas:
 knyga.autorius;
 //Pavaizdavimas konsolėje:
 console.log(knyga.autorius);
-console.log(knyga["puslapiuSkaicius"]);//su [] iškviečiamos savybės, pavadintos skaičiais ar dar kitaip neįprastai, arba dinaminės saybės.
+console.log(knyga["puslapiuSkaicius"]);//su [] iškviečiamos savybės, pavadintos skaičiais ar dar kitaip neįprastai, arba dinaminės savybės.
 //Nesančių savybių iškvietimas (grąžins 'undefined'):
 console.log(knyga.turinys);
 //Objekto tekstinio pavadinimo savybės įvedimas:
@@ -87,7 +88,7 @@ console.log (tusciasMasyvas);
 console.log ("MATEMATINIAI OPERATORIAI");
 //Operatoriai - integruoti JS veiksmai su vertėmis (operandais).
 //Matematiniai operatoriai +, -, /, *, ** (kėlimas laipsniu), % (grąžina dalybos liekaną);
-//sutrumpinti matematiniai operatoriai:
+//Sutrumpinti matematiniai operatoriai dažnai naudojami keiti kintamojo vertę:
 let skaicius = 7;
 skaicius++; //prideda vienetą.
 console.log(skaicius);
@@ -125,7 +126,7 @@ console.log (!(x!==y)); //false (apverstas 1 true).
 
 console.log ("FUNKCIJOS");
 //Funkcija - kodo segmentas, kurį galima iššaukti kelis kartus vėliau kode.
-//Pradedama raktažožiu 'function', po to seka 'pavadinimas', ('argumentas'), {'operacija'}.
+//Pradedama raktažožiu 'function', po to seka 'pavadinimas', ('argumentas'), {'operacijos blokas'}.
 function pridedamVieneta (k){
     return k+1
 }
@@ -140,16 +141,15 @@ console.log(m (10));
 console.log (m(pridedamVieneta (5))); //prideda vienetą ir po to atima vienetą.
 //Rodyklinės funkcijos daugiausiai skirtos perduoti bevardę funkciją vietoj argumento kitai funkcijai.
 let l = m => m + 10;
-//kintamojo l funkcijos argumentas m perduodamas operacijai m + 1.
-console.log (l(m (11)));
+//kintamajam l priskirta bevardė funkcija, kurios operacija yra m + 10, m yra argumentas. 
+console.log(l(10));
 
 console.log ("METODAI");
-//Metodais vadinamos funkcijos, priskirtos duomenų tipų (objektų, skaičių ir kt.) savybėms.
-//Pagal nutylėjimą globalūs metodai priskirti objekto ir masyvo prototipo objektui:
+//Metodais vadinamos funkcijos, priskirtos duomenų tipų (objektų, skaičių ir kt.) savybėms. JS vadinama objektinio projektavimo kalba, nes funkcijos yra priskirtos jos objektams.
 let masyvas = [1, 2, 3, 4, 5, 6, 7]
 //Pvz., metodas 'reverse' perkeis masyvo elementų išdėstymą atbuline tvarka.
 masyvas.reverse()
-console.log (masyvas);
+console.log (masyvas)
 //Metodas 'push' pridės naujus elementus.
 masyvas.push (8, 9, 10)
 console.log (masyvas);
@@ -169,7 +169,7 @@ knyga1.aprasas = function () {
 console.log (knyga1.aprasas ());
 
 console.log ("MATEMATINĖS FUNKCIJOS")
-//Matematinės funkcijos yra įterpos Math objekto metodai.
+//Matematinės funkcijos yra įterpos tarp Math objekto metodų.
 //Kai kurios jų:
 console.log (Math.random()); //grąžina skaičių tarp 0 ir 1.
 console.log (Math.abs(-10)); //grąžina absoliutinę skaičiaus vertę.
@@ -185,11 +185,9 @@ console.log (Math.pow (64, 1/6));//antro argumento šaknis pirmam argumentui.
 console.log (Math.sin (0.52359878)); // logaritminės funkcijos, taip pat cos, tan, atan su radianinėmis vertėmis.
 console.log (Math.max ("a", "b", "c")); // grąžina didžiausią argumento vertę.
 console.log (Math.min ("a", "b", "c")); // grąžina mažiausią argumento vertę.
-console.log (Math.log10 (100)); // dešimtainis logaritmas.
-console.log (Math.log2 (256)); // dvejetainis logaritmas;
 
 console.log("SKAIČIAI IR JŲ METODAI")
-//JS supranta tradicinius dešimtainius sveikuosius i trupmeniniu skaičius. Taip pat supranta parašytus binarinius, okta, heksa skaičius ir skaičius, parašytus su eksponente.
+//JS supranta tradicinius dešimtainius sveikuosius ir trupmeninius skaičius. Taip pat supranta parašytus binarinius, okta, heksa skaičius ir skaičius, parašytus su eksponente.
 console.log (10);
 console.log (13.15);
 console.log (0xac);
@@ -197,7 +195,7 @@ console.log (0b100100);
 console.log (0o123);
 //Aiškumo dėlei didelius skaičius galima skaidyti su _ simboliu:
 console.log (100_100.234_345);
-//JS trupmeniniai skaičiai iš binarinės bazės kaip 1/64, 1/2 yra tikslūs, tačiau labiau įprasti dešimtainės bazės skaičiai kaip 0,1 ar 0,001 yra tik artimi tikrosioms vertėms, kas gali sudaryti neaiškumų ypač su boolean vertėmis susijusiose operacijose.
+//JS trupmeniniai skaičiai iš binarinės bazės, pavyzdžiui, 1/64, 1/2, yra tikslūs, tačiau labiau įprasti dešimtainės bazės trupmeninia skaičiai, pvz.: 0,1 ar 0,001, yra tik artimi tikrosioms vertėms, kas gali sudaryti neaiškumų ypač su boolean vertėmis susijusiose operacijose.
 //dalijimas iš nulio grąžina 'Infinity' vertę.
 console.log (10/0);
 //nulio dalijimas iš nulio grąžina NaN vertę.
@@ -275,7 +273,11 @@ return data*penki
 console.log ("Skaičių 8 padauginsiu iš "+penki+" ir gausiu "+padaugintaIsPenkiu (8)+".")
 //Kitaip tą patį galima užrašyti per ` ženklą ir naudojant ${} kintamųjų vietos pažymėjimui ${}. Šiuo metodu galima užrašyti daugelio eilučių tekstą be \n kombinacijos:
 console.log (`Skaičių 8 
-padauginsiu iš ${penki} 
+padauginsiu iš ${penki}
+ir gausiu ${padaugintaIsPenkiu (8)}.`)
+//String.raw () funkcija grąžina `` ženklais parašytą tekstą kartu su \ ženklo kombinacijomis.
+console.log (String.raw`Skaičių 8 
+padauginsiu iš ${penki} \t
 ir gausiu ${padaugintaIsPenkiu (8)}.`)
 
 console.log ("SPECIALIOSIOS VERTĖS");
@@ -342,6 +344,7 @@ console.log (masyvas3);//masyvas3 yra nuoroda į tą patį objektą kaip masyvas
 masyvas3[0]=15;
 console.log (masyvas1);
 console.log (masyvas3);//savybės 0 pasikeitė objekte, į kurį nurodo masyvas1 ir masyvas2.
+//Objektų tipo duomenų savybes ir metodus galima peržiūrėti naršyklės konsolės lange išskleidus rodyklėlę ties pavadinimu.
 
 console.log ("PAPRASTŲJŲ VERČIŲ AUTOMATINIS TIPŲ KEITIMAS")
 //Vykdant veiksmus JS automatiškai keičia operandų tipus priklausomai nuo konteksto:
@@ -434,3 +437,58 @@ delete (PI);
 console.log (PI);//ignoruotas delete (PI).
 delete (kuboTuris);
 console.log (kuboTuris);//ignoruotas delete (kuboTuris).
+
+console.log ("SIMBOLIAI IR RegExp")
+//Simboliai yra tekstinės vertės paprastasis duomenų tipas, naudojamas unikalių objekto savybių nustatymui.
+//Simboliai sukuriami su 'Symbol'funkcija:
+let autoriausSavybe = Symbol ("autorius")
+//Įterpiame simpolio pavadinimą į objektą knyga.
+knyga[autoriausSavybe] = "V. M. Tekerėjus"
+console.log (knyga)
+//Simbolių vatojimas užtikrina, kad objekto savybė nebus netyčiomis pakeista.
+//Pavyzdžiui, galima sukurti lygia atrodančia savybę:
+let autoriausSavybe2 = Symbol ("autorius")
+knyga[autoriausSavybe2] = "V. M. Tekerėjus"
+//Tačiau šios savybės nebus tapačios:
+console.log(autoriausSavybe===autoriausSavybe2) //grąžina false.
+//Reguliariosios ekspresijos, trumpiau - RegExp, yra tekstinių duomenų tipas, skirtas ieškoti ir keisti pasikartojančias tekstines struktūras (angl. pattern).
+//RegExp duomuo užrašomas tarp dviejų // ženklų. Po to gali sekti papildomas ženklas ar ženklai, patikslinantys teksto panaudojimą.
+
+console.log ("DESTRUKTŪRIZACIJA")
+//Destruktūrizacija yra tam tikra kintamojo arba funkcijos parametro deklaracija, paimant jį iš objektinių duomenų, objekto ar masyvo.
+//Destruktūrizacijos deklaracija sudaryta iš dviejų dalių, atskirtų = priskyrimo ženklo.
+//Kairiojoje dalyje yra vienas ar keletas kintamųjų, dešiniojoje - objektas arba masyvas, iš kurio paimamos kintamojo vertės.
+//Pvz.:
+let [w, e, r] = [3, 4, 5];
+console.log (w);
+console.log (e);
+console.log (r);
+//Iš masyvo galima priskirti kintamajam tam tikros pozicijos vertę:
+[,h, ] = [8, 9, 10];
+console.log (h);
+//Jei bus bandoma priskirti neegzistuojančią vertę, kintamasis grįš su undefine verte:
+[,h,,e ] = [8, 9, 10];
+console.log (e);
+//Destruktūrizuojant likusius duomenis galima palikti atskirame masyve su trijų taškų priskyrimu:
+[,h,,...e ] = [8, 9, 10, 11, 12, 13];
+console.log (e);
+//Destruktūrizuojant pasiekiami vidiniai masyvai:
+[,,,[,h,]] = [8, 9, 10, e];
+console.log (h);
+//Objekto destruktūrizacija:
+console.log(knyga);
+let {autorius, pavadinimas, puslapiuSkaicius} = knyga;
+console.log(autorius);
+console.log(pavadinimas);
+console.log(puslapiuSkaicius);
+//Destruktūrizuojant objektus galima priskirti skirtingus savybių pavadinimus per : ženklą:
+let {autorius: aut1, pavadinimas: pav1} = knyga;
+console.log(aut1);
+console.log(pav1);
+//Tai gali būti naudinga, kai destruktūrizuojami sudėtiniai objektai su tais pačiais savybių pavadinimais.
+
+console.log ("GLOBALUS OBJEKTAS")
+//Globalus objektas yra objektas, kuris sukuriamas pradėjus veikti interneto naršyklei arba Node serverių programai ir jo savybės yra pasiekiamos JS. Šiose savybėse yra užfiksuotos globalios konstantos (pvz., undefined, infinity), objektai (pvz., Math, JSON), funkcijos ir konstruktorių funkcijos (pvz., parseInt (), Object ()).
+//Node programoje globalus objektas turi pavadinimą "global", kai naršyklėse - "Window".
+//Bendrai įvestas "globalThis" objektas, kuris nurodo ir naršyklių, ir Node globalius objektus (kurie skiriasi šiek tiek tapusavyje).
+console.log(globalThis);
