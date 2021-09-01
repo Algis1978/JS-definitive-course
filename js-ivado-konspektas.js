@@ -162,6 +162,11 @@ console.log ((x!==y)&&(x <= y)); //false (1 true, 1 false).
 console.log ((x!==y)||(x <= y)); //true (1 true, 1 false, || operatorius grąžins true, kai bent vienos pusės salyga yra true).
 console.log (!(x!==y)); //false (apverstas 1 true).
 
+console.log ("BITWISE OPERATORIAI");
+//Bitwise operatoriai atlieka veiksmus su skaičiais pavertę juos į 32 bitų bazę. JS užkoduoja skaičius 64 bitų trupmeniniais skaičiais, tad prieš atliekant bitwise veiksmą, skaičiai pakeičiami į 32 bitų ir baigus veiksmą pakeičiami atgal į dešimtainius.
+//
+
+
 console.log ("FUNKCIJOS");
 //Funkcija - kodo segmentas, kurį galima iššaukti kelis kartus vėliau kode.
 //Pradedama raktažožiu 'function', po to seka 'pavadinimas', ('parametras(-ai)'), {'operacijos blokas'}.
