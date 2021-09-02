@@ -57,7 +57,8 @@ console.log(typeof(knyga));
 //Objekto duomenų pavaizdavimas konsolėje:
 console.log(knyga);
 //Objekto atskirų savybių pasiekimas:
-knyga.autorius;
+knyga.autorius;//per taško notaciją;
+knyga["puslapiuSkaicius"];//per [] skliautų notaciją, tekstai užrašomi kabutėse;
 //Pavaizdavimas konsolėje:
 console.log(knyga.autorius);
 console.log(knyga["puslapiuSkaicius"]);//su [] iškviečiamos savybės, pavadintos skaičiais ar dar kitaip neįprastai, arba dinaminės savybės.
@@ -68,10 +69,16 @@ knyga.pavadinimas = "Tuštybės mugė";
 knyga.ISBN = "123-3234-345";
 //Skaičiaus pavadinimo savybės įvedimas:
 knyga[100] = "kodas";
+//Savybių pavadinimai iš dviejų žodžių užrašomi tekstinėse kabutėse ir iškviečiami [] skliaustų notacijos pagalba.
+knyga["išleidimo metai"] = 1992;
 //Tuščios savybės įvedimas:
 knyga.turinys = {};
 console.log(knyga);
+console.log(knyga["išleidimo metai"]);
 console.log(knyga.turinys);
+//Objekto savybė ištrinama naudojant delete raktažodį:
+delete knyga[100];
+console.log(knyga);
 
 console.log ("MASYVAI (arrays)");
 //Masyvai - numeruotų duomenų rinkiniai.
@@ -91,10 +98,11 @@ console.log (gatvesNamuNumeriai[gatvesNamuNumeriai.length-1]);
 gatvesNamuNumeriai[0]=23;
 console.log (gatvesNamuNumeriai[0]);
 //Galima įvesti į masyvą aukštesnio eilės skaičiaus elementus:
-gatvesNamuNumeriai[10]=25;
+gatvesNamuNumeriai[0]=25;
 console.log (gatvesNamuNumeriai[10]);
 console.log (gatvesNamuNumeriai[9]);
 console.log (gatvesNamuNumeriai.length);
+
 // Tekstas turi masyvo savybių: - ilgį, simbolio numerį:
 let z = "visada";
 console.log (z.length); //teksto ilgis.
@@ -106,6 +114,12 @@ const tusciasMasyvas = [];
 console.log (tusciasObjektas);
 console.log (tusciasMasyvas);
 //Tiek objektai, tiek masyvai savo sudėtyje gali turėti kitus objektus ir masyvus.
+//Pasiekti sudėtinių objektų ir masyvų savybes naudojama daugybinė taškų ir [] skliaustų notacija.
+//Įvedame naują objektą į objektą knyga.
+knyga["autoriaus_savybes"] = {tautybe:"anglas", amzius:"XIX", lytis:"vyras"}
+console.log(knyga);
+//Pasiekiame savybę tautybe vidiniame objekte:
+console.log(knyga.autoriaus_savybes["tautybe"]);
 
 console.log ("ARITMETINIAI OPERATORIAI");
 //Operatoriai - integruoti JS veiksmai su vertėmis (operandais).
@@ -163,7 +177,7 @@ console.log ((x!==y)||(x <= y)); //true (1 true, 1 false, || operatorius grąži
 console.log (!(x!==y)); //false (apverstas 1 true).
 
 console.log ("BITWISE OPERATORIAI");
-//Bitwise operatoriai atlieka veiksmus su skaičiais pavertę juos į 32 bitų bazę. JS užkoduoja skaičius 64 bitų trupmeniniais skaičiais, tad prieš atliekant bitwise veiksmą, skaičiai pakeičiami į 32 bitų ir baigus veiksmą pakeičiami atgal į dešimtainius.
+//Bitwise operatoriai atlieka veiksmus su  skaičiais pavertę juos į 32 bitų bazę. JS užkoduoja skaičius 64 bitų trupmeniniais skaičiais, tad prieš atliekant bitwise veiksmą, skaičiai pakeičiami į 32 bitų ir baigus veiksmą pakeičiami atgal į dešimtainius.
 //
 
 
@@ -554,7 +568,7 @@ console.log(pav1);
 console.log ("VEIKSMŲ EILIŠKUMAS")
 //JS operacijose veiksmai atliekami sekant užrašymo eiliškumą, iš viršaus į apačią. 
 //Daugybiniuose veiksmuose su operatoriais teikiama loginė pirmenybė, panaši į matematinę.
-//Pirmiausia atliekai veiksmai (skliaustuose), daugybos ir dalybos veiksmai atlieai prieš sudėties ir atimties.
+//Pirmiausia atliekami veiksmai () skliaustuose, ++ ir -- vėliau, po to daugybos ir dalybos veiksmai atliekami prieš sudėties ir atimties.
 
 console.log ("GLOBALUS OBJEKTAS")
 //Globalus objektas yra objektas, kuris sukuriamas pradėjus veikti interneto naršyklei arba Node serverių programai ir jo savybės yra pasiekiamos JS. Šiose savybėse yra užfiksuotos globalios konstantos (pvz., undefined, infinity), objektai (pvz., Math, JSON), funkcijos ir konstruktorių funkcijos (pvz., parseInt (), Object ()).
@@ -562,3 +576,12 @@ console.log ("GLOBALUS OBJEKTAS")
 //Bendrai įvestas "globalThis" objektas, kuris nurodo ir naršyklių, ir Node globalius objektus (kurie skiriasi šiek tiek tapusavyje).
 console.log(typeof(globalThis));
 console.log(globalThis);
+
+
+function checkObj(obj, checkProp) {
+    // Only change code below this line
+    let prop = checkProp;
+    return obj.hasOwnProperty(prop) ? obj[prop] : "Not Found";
+    // Only change code above this line
+  }
+  console.log (checkObj(knyga, "autorius"));
