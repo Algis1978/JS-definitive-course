@@ -1,0 +1,19 @@
+{
+  "name": "naujas-serveris",
+  "version": "1.0.0",
+  "description": "naujo serverio programa",
+  "main": "naujas-serveris.js",
+  "type": "module",
+  "scripts": {
+    "test": "go"
+  },
+  "keywords": [
+    "new",
+    "server"
+  ],
+  "author": "Algirdas Navickas",
+  "license": "MIT",
+  "dependencies": {
+    "moment": "^2.29.1"
+  }
+}
