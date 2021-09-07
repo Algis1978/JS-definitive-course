@@ -1,5 +1,7 @@
 console.log ("ĮŽANGA");
-//Javascript - objektinio programavimo kalba, dažniausiai naudojama vartotojo interaktyvioje sąsajoje WWW puslapiuose. Ją 1995 m. sudarė Brendan Eich. Pirmą kartą standartizuota 1997 m. Oficialiau žinoma ECMAscript pavadinimu pagal ECMA - Europos kompiuterinės įrangos gamintojų asociacijos, kuri įvedė JS standartą, pavadinimą.
+//Javascript - objektinio programavimo kalba, dažniausiai naudojama vartotojo interaktyvioje sąsajoje WWW puslapiuose. Ją 1995 m. sudarė Brendan Eich. 
+//JS buvo skirta Netscape naršyklei ir pirmą kartą panaudota 1996 m.
+//Pirmą kartą standartizuota 1997 m. Oficialiau žinoma ECMAscript pavadinimu pagal ECMA - Europos kompiuterinės įrangos gamintojų asociacijos, kuri įvedė JS standartą, pavadinimą. Standarto pavadinimas ECMA-262.
 //Vienas iš didžiausių pakeitimų JS standarte įvyko 2015 m. paverčiant JS visaverte programavimo kalba. Po to galiojanti JS redakcija paprastai vadinama „ES6 ir vėlesne“ versija ir atnaujinama bemaž kasmet.
 // Javascript programos 'hostai' yra interneto naršyklės ir nuo 2010 m. - Node.js serverių programa.
 // Paprasčiausiai Javascript išbandyti galima iššaukus interneto naršyklėje 'Developer Tools' langą per F12 arba Ctrl+Shift+I. Po to atsidariusiame lange pasirinkti 'Console' skirtuką. 
@@ -88,6 +90,15 @@ let knyga2 = {
 delete knyga2["autorius"];
 console.log(knyga2);
 
+//Su raktažodžiu "new" galima sukurti objekto tipo tekstus, skaičius ir boolean vertes:
+let z = new String ("niekada")
+console.log(typeof(knyga));
+z = new String (100);
+console.log(typeof(knyga));
+z = new Boolean ("false")
+console.log(typeof(knyga));
+//Tokie veiksmai yra vengtini.
+
 console.log ("MASYVAI (arrays)");
 //Masyvai - numeruotų duomenų rinkiniai.
 //Masyvų sukūrimas:
@@ -102,17 +113,23 @@ console.log (gatvesNamuNumeriai[2]);
 console.log (gatvesNamuNumeriai.length);
 //Pakutinio masyvo elemento pasiekimas:
 console.log (gatvesNamuNumeriai[gatvesNamuNumeriai.length-1]);
+
 //Masyvo elementų įvedimas arba keitimas:
 gatvesNamuNumeriai[0]=23;
 console.log (gatvesNamuNumeriai[0]);
 //Galima įvesti į masyvą aukštesnio eilės skaičiaus elementus:
 gatvesNamuNumeriai[0]=25;
+//Tačiau tokiu aveju tapinėse pozicijose lieka undefined elementai:
 console.log (gatvesNamuNumeriai[10]);
 console.log (gatvesNamuNumeriai[9]);
 console.log (gatvesNamuNumeriai.length);
+//Masyvo elemento ištrynimas:
+delete gatvesNamuNumeriai[2];
+//Naudojant delete raktažodį pozicijoje lieka undefined/empty elementas, tad šis trynimo būdas nenaudotinas.
+console.log (gatvesNamuNumeriai);
 
 // Tekstas turi masyvo savybių: - ilgį, simbolio numerį:
-let z = "visada";
+z = "visada";
 console.log (z.length); //teksto ilgis.
 console.log (z[3]); //ketvirta raidė tekste.
 
@@ -132,6 +149,68 @@ knyga3["autoriaus_savybes"] = {tautybe:"anglas", amzius:"XIX", lytis:"vyras"}
 console.log(knyga3);
 //Pasiekiame savybę tautybe vidiniame objekte:
 console.log(knyga3.autoriaus_savybes["tautybe"]);
+
+//Masyvų tipas JS yra object. Specialiam patikrinimui yra metodas Array.isArray(), kuris grąžina true, jei objektas yra masyvas, ir false, jei nėra:
+console.log (Array.isArray(gatvesNamuNumeriai));
+
+console.log ("MASYVŲ METODAI")
+//Masyvų elementų keitimas:
+let mas = [1, 2, 3];
+mas.push(4);
+console.log(mas);//.push prideda elementą masyvo pabaigoje.
+mas.pop();
+console.log(mas);//.pop nuima elementą masyvo pabaigoje.
+mas.shift();
+console.log(mas);//.shift nuima elementą masyvo paradžioje.
+mas.unshift(5);
+console.log(mas);//.unshift prideda elementą masyvo paradžioje.
+
+let mas1 = [1, 2, 3, 4]
+mas1.splice (2, 1, 12, 24, 36);
+console.log(mas1);//.splice pozicijoje 2 ištrina 1 elementą ir prideda nurodytuosius (12, 24, 36);
+mas1.splice (3, 2, "mes", "jie");
+console.log(mas1);
+//.splice galima naudoti pašalinat elementus iš masyvo vietoj delete raktažodžio ir nepaliekant tuščių pozicijų:
+mas1.splice(1, 2);
+console.log(mas1);//pirmoje masyvo pozicijoje ištrinti 2 elementai (poz. 2 ir 3);
+let h = mas1.concat(mas, gatvesNamuNumeriai);
+console.log(h);//.concat sujungia keletą masyvų į vieną.
+h = h.slice(5);
+console.log (h);//.slice sukuria naują masyvą nuo nurodytos pozicijos iki pabaigos.
+h = h.slice (0, 6);
+console.log (h);//.slice sukuria naują masyvą nuo pirmo argumento pozicijos (įskaitant) iki antro argumento pozicijos (neįskaitant).
+
+//Masyvo elementų keitimas į tekstą:
+h = mas.toString();
+console.log(h);//.toString tekstą pateikia ištisinį su kableliais;
+h = mas.join(" / ");
+console.log(h);//.join tekstą pateikia ištisinį su nuodytu argumento įterpiniu;
+//JS gali automatiškai paversti tekstų masyvą vientisu tekstu priklausomai nuo konteksto:
+
+//Masyvų elementų rūšiavimas:
+h = ["mes", "jie", "jos", "arba", "kiti"];
+console.log (h.sort());//.sort surūšiuoja tekstinius elementus pgal abėcėlę;
+console.log (h.reverse ());//.reverse pakeičia elementų išdėstymą atbuline tvarka;
+//.sort metodas tinka skaičių pozicijų rūšiavimui mažėjančia ar didėjančia tvarka. Tam reikia papildomai iššaukti palyginimo funkciją. .sort palygina du elementus ir pirmajai pozicijai parenka mažiausią arba didžiausią:
+h = [4, 20, -3, 12, 1];
+h = h.sort (function (a, b){
+    return (a-b);
+})
+console.log(h);//skaičiai išrūšiuoti didėjimo tvarka (į dešinę);
+h = h.sort (function (a, b){
+    return (b-a);
+})
+console.log(h);//skaičiai išrūšiuoti mažėjimo tvarka (į dešinę);
+//Surūšiavus elementus atitinkamai galima rasti didžiausią ir mažiausią masyvo skaičius (bus pirmasis ir paskutinis).
+let didziausias = h[0];
+let maziausias = h[h.length-1];
+console.log (didziausias, maziausias);
+//Skaičius galima sumaišyti atsitiktine tvarka;
+h = h.sort (function (a, b){
+    return (0.5-Math.random());
+})
+console.log(h);
+//.sort palyginimo funkcija veikia ir objektų masyve atžvilgiu. Tuomet lyginami atskiri objektų elementai (pavadinimas ir vertė);
 
 console.log ("ARITMETINIAI OPERATORIAI");
 //Operatoriai - integruoti JS veiksmai su vertėmis (operandais).
@@ -216,11 +295,8 @@ console.log(l(10));
 console.log ("METODAI");
 //Metodais vadinamos funkcijos, priskirtos duomenų tipų (objektų, skaičių ir kt.) savybėms. JS vadinama objektinio projektavimo kalba, nes funkcijos yra priskirtos jos objektams.
 let masyvas = [1, 2, 3, 4, 5, 6, 7]
-//Pvz., metodas 'reverse' perkeis masyvo elementų išdėstymą atbuline tvarka.
-//Metodo duomenų tipo patikrinimas:
-console.log(typeof(masyvas.reverse));
-//Reverse metodo vykdymas:
-masyvas.reverse()
+//Pvz., metodas 'shift' ištrins pirmąjį masyvo elementą.
+masyvas.shift();
 console.log (masyvas)
 //Metodas 'push' pridės naujus elementus.
 masyvas.push (8, 9, 10)
@@ -240,7 +316,7 @@ knyga4.aprasas = function () {
 }
 console.log (knyga4.aprasas());
 
-console.log ("MATEMATINĖS FUNKCIJOS")
+console.log ("MATH OBJEKTAS")
 //Matematinės funkcijos yra įterpos tarp Math objekto metodų.
 //Kai kurios jų:
 console.log (Math.random()); //grąžina skaičių tarp 0 ir 1.
@@ -248,62 +324,89 @@ console.log (Math.abs(-10)); //grąžina absoliutinę skaičiaus vertę.
 console.log (Math.round(1.32)); //suapvalina skaičių iki artimiausios sveikosios vertės.
 console.log (Math.ceil(2.32)); //prideda trupmeninę dalį iki sveikojo skaičiaus.
 console.log (Math.floor(2.32)); //atima trupmeninę dalį iki sveikojo skaičiaus;
-console.log (Math.PI); //skaičius Pi.
-console.log (Math.E); //skaičius E.
-console.log (Math.log (10)); //skaičiaus 10 natūralus logaritmas.
-console.log (Math.sqrt (16));//kvadratinė šaknis.
+console.log (Math.sqrt (16));//kvadratinė šaknis iš argumento.
+console.log (Math.log (16));//natūralus logaritmasiš argumento.
 console.log (Math.pow (2, 6));//pirmo argumento pakėlimas antro argumento laipsniu.
-console.log (Math.pow (64, 1/6));//antro argumento šaknis pirmam argumentui.
-console.log (Math.sin (0.52359878)); // logaritminės funkcijos, taip pat cos, tan, atan su radianinėmis vertėmis.
-console.log (Math.max ("a", "b", "c")); // grąžina didžiausią argumento vertę.
-console.log (Math.min ("a", "b", "c")); // grąžina mažiausią argumento vertę.
+console.log (Math.pow (64, 1/6));//antro argumento trupmenos šaknis pirmam argumentui.
+console.log (Math.sin (0.52359878)); // logaritminės funkcijos, taip pat asin, cos, acos, tan, atan su radianinėmis vertėmis.
+console.log (Math.max (8, 10, 14)); // grąžina didžiausią argumento vertę.
+console.log (Math.min (8, 10, 14)); // grąžina mažiausią argumento vertę.
+
+//Math objekto konstantos:
+console.log (Math.PI); //skaičius Pi.
+console.log (Math.E); //Eulerio skaičius.
+console.log (Math.LN2); //natūralus skaičiaus 2 logaritmas;
+console.log (Math.LN10); //natūralus skaičiaus 10 logaritmas;
+console.log (Math.SQRT2); //skaičiaus 2 kvadratinė šaknis
+
+//Sukombinavus Math.floor ir Math.random metodus galima gauti atsitiktinio sveikojo skaičiaus intervale generatorių:
+z = Math.floor(Math.random()*100 + 5);//Grąžins sveikąjį skaičių tarp 5 ir 105;
+console.log(z);
 
 console.log("SKAIČIAI")
-//JS supranta tradicinius dešimtainius sveikuosius ir trupmeninius skaičius. Taip pat supranta parašytus binarinius, okta, heksa skaičius ir skaičius, parašytus su eksponente.
-console.log(typeof(1.03e25));
+//JS supranta tradicinius dešimtainius sveikuosius ir trupmeninius skaičius. Taip pat supranta parašytus dvejetainius (binarinius), aštuntainius, šešioliktainius skaičius ir skaičius, parašytus su eksponente. JS yra tik vienas skaičių tipas number. Jie užkoduoti naudojant 64 bitų kodą pagal IEEE 754 standartą.
+//Skaitmenų ženklai string tipo duomenyse JS netraktuojami skaičiais per se, iškyrus, kai JS atpažįsta matematines operacijas su jais. Skaičių objektų tipas nenaudotinas. 
+//JS sveikieji skaičiai yra tikslūs iki 15 skaitmenų ilgio, kitu atveju apvalinami, jei nėra užrašyti su eksponente.
+//JS leidžia 17 skaitmenų trupmeninės dalies ilgį, tačiau aritmetiniai veiksmai su trupmeniniais skaičiais gali būti netikslūs.
 console.log (10);
-console.log (13.15);
-console.log (0xac);
-console.log (0b100100);
-console.log (0o123);
+console.log (typeof(10));
+console.log (13.15);//trupmeninei daliai atskirti naudojamas taškas;
+console.log(1.03e25);//skaičius su eksponente.
+console.log (0b100100);// dvejetainės (binarinės) sistemos skaičiai;
+console.log (0o123);//aštuntainės sistemos skaičiai;
+console.log (0xac);// šešioliktainės sistemos skaičiai;
 //Aiškumo dėlei didelius skaičius galima skaidyti su _ simboliu:
 console.log (100_100.234_345);
 //JS trupmeniniai skaičiai iš binarinės bazės, pavyzdžiui, 1/64, 1/2, yra tikslūs, tačiau labiau įprasti dešimtainės bazės trupmeniniai skaičiai, pvz.: 0,1 ar 0,001, yra tik artimi tikrosioms vertėms, kas gali sudaryti neaiškumų ypač su boolean vertėmis susijusiose operacijose.
-//dalijimas iš nulio grąžina 'Infinity' vertę.
+//Dalijimas iš nulio grąžina 'Infinity' vertę.
 console.log (10/0);
-//nulio dalijimas iš nulio grąžina NaN vertę.
+//Nulio dalijimas iš nulio grąžina NaN vertę.
 console.log (0/0);
+
+console.log("NUMBER OBJEKTAS, PARSEINT IR PARSEFLOAT METODAI")
+//Number() funkcija keičia kintamųjų vertes į skaičius:
+console.log (Number("100"));// 100
+console.log (Number(true));// 1
+console.log (Number(false));// 0
+//Didžiausi ir mažiausi JS skaičiai yra tarp Number objekto savybių:
+console.log (Number.MAX_VALUE);// 1.7976931348623157e+308, didžiausias JS skaičius.
+console.log (Number.MIN_VALUE);// 5e-324, mažiausias JS skaičius.
+
 //Objekto Number metodai taikomi skaičiaus duomenų tipui.
-console.log (Number.isNaN(NaN));//patikrinimas ar argumentas yra NaN vertė.
-console.log (Number.isInteger(10));//patikrinimas ar argumentas yra sveikasis skaičius.
+console.log (Number.isNaN(NaN));//patikrinimas, ar argumentas yra NaN vertė.
+console.log (Number.isInteger(10));//patikrinimas, ar argumentas yra sveikasis skaičius.
 console.log (Number.isInteger(10.1));
 console.log (Number.isFinite(10));//patikrinimas ar argumentas yra JS skaičius.
 console.log (Number.parseInt ("12.8"));//pakeičia tekstą sveikuoju skaičiu atmetant trupmenos dalį.
 console.log (Number.parseFloat ("12.3"));//pakeičia tekstą skaičiumi įskaitant trupmeninę dalį.
 
-console.log ("SKAIČIŲ METODAI IR FUNKCIJOS")
-//toString metodas leidžia konvertuoti skaičius į tekstą atsižvelgiant į jų bazę:
-let h = 100;
-console.log (h.toString (10));//dešimtainis kodas.
-console.log ("0b" + h.toString (2));//binarinis kodas.
-console.log ("0o" + h.toString (8));//okta kodas.
-console.log ("0x" + h.toString (16));//heksa kodas.
-
-//Skaičių metodai:
-h = 127.34349
-console.log (h.toFixed (0));//palieka 0 skaičių po kablelio.
-console.log (h.toFixed (2));//palieka 2 skaičius po kablelio.
-console.log (h.toExponential (3));//palieka 1 sveikąjį ir 3 skaičius po kablelio ir pateikia su "e" užrašymu.
-console.log (h.toPrecision (7));//užrašo tik norimą kiekį skaičiaus ženklų, šiuo aveju septynis.
-//PASTABA. Šios funkcijos suapvalina skaičius (paskutinis atvejis).
-
-//Funkcijos parseInt ir parseFloat stengsis pakeisti tekstų simbolius skaičiais:
-console.log (parseInt ("6.87"));//parseInt grąžina sveikuosius skaičius.
-console.log (parseInt ("0xFA3"));//funkcijos keičia heksa skaičius į dešimtainius.
+//Globalūs metodai parseInt ir parseFloat keičia tekstų simbolius skaičiais:
+console.log (parseInt ("6.87"));//parseInt grąžina skaičiaus sveikąją dalį.
+console.log (parseInt ("0xFA3"));//parseInt ir parseFloat funkcijos keičia šešioliktainius skaičius į dešimtainius.
 console.log (parseInt ("01001", 2));//su nurodyta baze (antruoju argumentu) parseInt kovertuoja skaičius į dešimtainius.
 console.log (parseFloat ("6.87"));//parseFloat grąžina skaičius su trupmenine dalimi.
-console.log (parseFloat ("3.14true"));//funkcijos grąžina skaičių, jei jis yra teksto priekyje.
-console.log (parseFloat ("true 3.14"));//funkcijos nesupranta skaičių teksto dalyje ir grąžina NaN.
+console.log (parseFloat ("3.14true"));//parseInt ir parseFloat funkcijos grąžina skaičių, jei jis yra teksto priekyje.
+console.log (parseFloat ("true 3.14"));//parseInt ir parseFloat funkcijos nesupranta skaičių teksto dalyje ir grąžina NaN.
+
+console.log ("SKAIČIŲ METODAI IR FUNKCIJOS")
+//toString metodas leidžia konvertuoti skaičius į tekstą atsižvelgiant į jų bazę:
+h = 100;
+console.log (h.toString (10));//dešimtainis skaičius.
+console.log ("0b" + h.toString (2));//dvejetainis skaičius.
+console.log ("0o" + h.toString (8));//aštuntainis skaičius.
+console.log ("0x" + h.toString (16));//šešioliktainis skaičius.
+
+h = 127.34349
+console.log (h.toFixed (0));//palieka trupmeninės dalies (po kablelio) argumento kiekį skaitmenų.
+console.log (h.toFixed (2));//paliko 2 skaitmenis po kablelio.
+console.log (h.toExponential (3));//palieka 1 sveikąjį ir argumento kiekį skaitmenų po kablelio bei pateikia eksponentinį užrašymą.
+console.log (h.toPrecision (7));//užrašo tik norimą kiekį skaitmenų nuo skaičiaus pradžios, šiuo aveju septynis.
+//PASTABA. Šios funkcijos suapvalina skaičius (paskutinis atvejis).
+console.log((115+15).valueOf());//valueOf metodas grąžina iš skaičių skaičius.
+//valueOf metodas panauojamas pakeičiant skaičiaus tipą iš object į number.
+h = new Number(115);
+console.log(typeof(h));
+console.log(typeof(h.valueOf()));
 
 console.log ("BITWISE OPERATORIAI");
 //Bitwise operatoriai atlieka veiksmus su binariniais skaičiais pavertę juos 32 bitų sveikaisiais skaičiais. JS užkoduoja skaičius 64 bitų trupmeniniais skaičiais, tad prieš atliekant bitwise veiksmą, skaičiai pakeičiami į 32 bitų ir baigus veiksmą pakeičiami atgal.
@@ -335,12 +438,12 @@ let iso = dabar.toISOString(); //laiko formato perrašymas.
 console.log (iso);
 
 console.log("TEKSTAS (string)")
-//Tekstiniai duomenys rašomi apskliausti viengubomis arba dvigubomis kabutėmis (pagal EN klaviatūrą):
+//Tekstiniai duomenys (taip pat vadinami eilutėmis) rašomi apskliausti viengubomis arba dvigubomis kabutėmis (pagal EN klaviatūrą):
 console.log("tekstas");
 console.log('tekstas');
 console.log(typeof("tekstas"));//duomens tipas.
 console.log(typeof('tekstas'));//duomens tipas.
-//vienos eilutės tekstas perkeliamas į kitą eilutę per \n kombinaciją:
+//Vienos eilutės tekstas perkeliamas į kitą eilutę per \n kombinaciją:
 console.log('tekstas\nkita eilutė');
 //kelių eilučių tekstas sukeliamas į vieną eilutę per \ simbolį:
 console.log('tekstas\
@@ -351,6 +454,8 @@ console.log ('tekstas\'tekstas\"tekstas\\')
 console.log ("tekstas \xA9"); //Unicode simboliai.
 console.log ("tekstas \u{1f600}"); //Unicode simboliai.
 console.log ("tekstas \u1d60"); //Unicode simboliai.
+//Simbolis \ turi kitų reikšmių, pvz., \b, \t ir kt., bet šios vertės buvo reikalingo spausdinimo įrenginiams, faksams ir šiuo metu nebeaktualios.
+//Pastaba. \ simboliu negalima perkelti į kitą eilutę JS kodo.
 
 console.log("VEIKSMAI SU TEKSTAIS")
 // Su + ir += galima sujungti tekstus į vieną:
@@ -358,32 +463,53 @@ console.log ("vienas"+"du"+"trys"+"keturi");
 // Su === ir !== galima palyginti tekstus;
 console.log ("vienas"==="du");
 console.log ("vienas"!=="du");
-//Kaip masyvo atveju, su .length pamatuojamas teksto ilgis, pozicijos pradedamos skaičiuot nuo 0 (nulinės) pozicijos:
+//Kaip masyvo atveju, su .length pamatuojamas teksto ilgis, pozicijos pradedamos skaičiuoti nuo 0 (nulinės) pozicijos:
 console.log ("vienas".length);
 //Palyginami tekstų 16 bit kodai:
 console.log ("vienas">"du");
+//Tekstą galima vertinti kaip masyvą:
+console.log ("vienas"[1]);//tas pats traktuojant tekstą kaip masyvą.
+console.log ("vienas"["vienas".length-1]);
+//Tačiau tai nerekomenduotina. Jei visgi norima tai daryti reikėtų teksto tipą pakeisti į masyvą su split metodu:
+h = "vienas";
+console.log(h.split());
+console.log(h.split(""));//išves visus teksto simbolius į atskirus masyvo elementus.
+console.log(typeof(h.split()));
+console.log(typeof(h.split("")));
 
 console.log ("TEKSTŲ METODAI");
-// Metodai (grąžina naują tekstą):
-console.log ("vienas".substring (1, 4));//teksto fragmentas.
-console.log ("vienas".slice (-2));//paskutiniai du simboliai.
-console.log ("vienas du".split (" "));//perkerta į du tekstus panaikinant nurodytą ženklą (šiuo atveju tuščią tarpelį).
+// Panaudoti tekstų metodai grąžina naują tekstą.
+//Teksto fragmentų paieška:
 console.log ("vienas kiemas".indexOf ("e"));//parodo pirmą argumento simbolio pozicija.
 console.log ("vienas kiemas".indexOf ("e", 3));//pirma argumento simbolio pozicija po antros pozicijos.
 console.log ("vienas kiemas".indexOf ("u", 3));//jei simbolių nėra, grąžinamas -1. 
-console.log ("vienas kiemas".indexOf ("kie", 3));//galioja ir simbolių kombinacijom.
+console.log ("vienas kiemas".indexOf ("kie", 3));//galioja ir simbolių kombinacijom (teksto ištraukom).
+console.log ("vienas kiemas".search ("e"));//parodo pirmą argumento simbolio pozicija.
+//indexOf ir search metoai yra tapatū, tačiau search metodas leižia naudoti RegExp argumentus.
+//Teksto fragmentų atskyrimas:
+console.log ("vienas".substring (4));//teksto fragmentas nuo 4 pozicijos (įskaitant) pabaigos.
+console.log ("vienas".substring (1, 4));//teksto fragmentas nuo 1 pozicijos (įskaitant) iki 4 (neįskaitant).
+console.log ("vienas".substr (1, 3));//teksto fragmentas nuo 1 pozicijos (įskaitant) 3 pozicijų ilgio;
+console.log ("vienas".slice (4));//teksto fragmentas nuo 4 pozicijos (įskaitant) pabaigos;
+console.log ("vienas".slice (0, 2));//simboliai nuo 0 (įskaitant) iki 2 pozicijos (neįskaitant);
+console.log ("vienas".slice (-2));//palieka paskutinius 2 simbolius.
+console.log ("vienas".slice (-3, -1));//paskutiniai du simboliai.
+//slice ir substring metodai yra panašūs, tik substring nepriima nigiamų argumentų. Substr metode nurodomas simbolių ilgi, o ne pozicija.
+
+console.log ("vienas du".split (" "));//perkerta į du tekstus panaikinant nurodytą simbolį ar simbolių fragmentą (šiuo atveju tuščią tarpelį) ir įkelia naujus tekstus į masyvą.
 console.log ("vienas".startsWith ("k"));//patikrina, ar argumetu prasideda.
 console.log ("vienas".endsWith ("k"));//patikrina, ar argumetu užsibaigia.
 console.log ("vienas".includes ("ena"));//patikrina, ar yra argumentas.
-console.log ("vienas".replace ("vien", "kiem"));//pakeičia pirmą argumentą antru.
-console.log ("VieNas".toLowerCase ());//tik mažosios raidės.
-console.log ("VieNas".toUpperCase ());//tik didžiosios raidės. 
+console.log ("vienas".replace ("vien", "kiem"));//pakeičia pirmą argumentą antru, bet veikia tik pirmo rasto fragmnto atveju. Norint pakeisti daugelį fragmentų viename tekste reikia panaudoti RegExp tipo argumentą.
+console.log ("VieNas".toLowerCase ());//pakeičia tik į mažąsias raides.
+console.log ("VieNas".toUpperCase ());//pakeičia tik į didžiąsias raides. 
 console.log ("vienas".charAt (1));//grąžina simbolį argumento eilės pozicijoje.
 console.log ("vienas".charAt ("vienas".length-1));//grąžina paskutinį simbolį.
-console.log ("vienas"[1]);//tas pats traktuojant tekstą kaip masyvą.
-console.log ("vienas"["vienas".length-1]);
+console.log ("vienas".charCodeAt (0));//grąžina simbolio unicode kodą.
 console.log ("vienas ".trim ());//ištrina tuščius tarpus teksto pradžioje ir pabaigoje.
 console.log ("vienas ".repeat (3));//pakartoja tekstą nurodytą argumentu kartų.
+h = "vienas";
+console.log (h.concat(" ", "didelis", " ", "kiemas"));//sujungia keletą tekstų į vieną, nors tokiu atveju paprasčiau naudoti + operatorių.
 
 console.log ("TEKSTO IR KINTAMŲJŲ UŽRAŠYMAS KARTU");
 //Tekstas ir kintamieji užrašomi kartu naudojant + operatorių:
@@ -437,9 +563,9 @@ h = function (data) {
 }
 console.log (h (5));
 
-console.log ("PAPRASTIEJI IR OBJEKTŲ TIPAI")
+console.log ("PAPRASTIEJI IR OBJEKTINIAI TIPAI")
 //Paprastaisiais duomenų tipais vadinami tipai su nekeičiamomis vertėmis: skaičiai, tekstai, boolean ir spec. vertės.
-// Objektų tipai: objektai, masyvai, funkcijos, kurių duomenys gali būti keičiami.
+// Objektiniai tipai: objektai, masyvai, funkcijos, kurių duomenys gali būti keičiami.
 // Išimtys: null, kuris yra objektas, ir undefined, kurio tipas yra undefined (nežinomas).
 // Duomenų tipą galima pasitikrinti operatoriumi typeof:
 console.log(typeof "12");
@@ -618,8 +744,7 @@ console.log ("Blokas")
 //Šiuo atveju kintamieji yra deklaruoti kintamieji, objektai ir funkcijos bei funkcijų argumentai.
 //Globaliame bloke įvesti kintamieji yra pasiekiami iš bet kurios kodo vietos.
 //Atskirame bloke įvesti kintamieji yra pasiekiami tik šio bloko ribose.
-//Blokas įrėminamas {} skliaustais ir yra funkcijų ir steitmentų dalis.
-//Iki šiol visi obejektai, kintamieji ir funkcijos priklausė globaliam blokui.
+//Blokai yra funkcijų ir steitmentų turinys.
 //Sukuriame kintamuosius funkcijos bloke:
 function blokoNaudojimoPavyzdys1 (x, y) {
     let a = (x+y)**y+x|y++;
@@ -627,7 +752,7 @@ function blokoNaudojimoPavyzdys1 (x, y) {
     return b
 }
 console.log (blokoNaudojimoPavyzdys1 (40, 4));
-// kintamieji x, y, a, b egzistuoja tik funkcijos bloke.
+//Kintamieji x, y, a, b egzistuoja tik funkcijos bloke.
 //console.log(b); globaliame bloke išmes klaidą 'b is not defined'.
 //Tai leidžia naudoti vienodų pavadinimų kintamuosius neprikausomuose blokuose daug kartų.
 //Tačiau kintamasis h buvo deklaruotas globaliame bloke:
@@ -640,7 +765,7 @@ function blokoNaudojimoPavyzdys2 (x, y) {
     return b
 }
 console.log (blokoNaudojimoPavyzdys2 (40, 4));
-console.log(h);//globalaus kintamojo vertės pakeitimas persiduos iš bloko ribų.
+console.log(h);//globalaus kintamojo vertės pakeitimas persiduos už bloko ribų.
 function blokoNaudojimoPavyzdys2 (x, y) {
     let a = (x+y)**y+x|y++;
     let h = 60;
@@ -650,7 +775,7 @@ function blokoNaudojimoPavyzdys2 (x, y) {
 }
 console.log (blokoNaudojimoPavyzdys2 (40, 4));
 console.log(h);//Įvedus to paties pavadinimo kintamąjį kaip globaliame bloke, jo vertė bus perrašoma bloko viduje, bet nepersiduos už bloko ribų.
-//Paprastųjų verčių keitimas vyksta eiliškumo pincipu. Tai: string, number, boolean, null ir undefined.
+//Verčių keitimas bloke vyksta eiliškumo pincipu.
 //Tad priskyrus kintamajam vieną iš šių verčių ji galios nuo priskyrimo eilutės ir žemiau iki kito pakeitimo.
 h = 10;
 h++;// dabar h = 11;
@@ -658,17 +783,7 @@ h = h%3;//dabar h = 2;
 h *=10// dabar h = 20;
 console.log(h);
 
-//Objekto savybių nustatymai persiduoda į ankstesnį bloką.
-//Pabandykite 663-oje eilutėje įvesti knyga.testo_savybe = "testo_savybe" ir nauja savybė bus matoma 58-os eilutės console.log(knyga) savybėse.
-//Tas pats galioja funkcijoms - vėliausias variantas persiduoda visiems tos pačios funkcijos aprašams ir panadojimams ankstesniame kode.
-//Tačiau keičiamas masyvas keičiasi kodo eigoje ir pakeitimai nepersiduoda ankstesniems masyvo duomenims.
-h = [1, 2, 3, 4, 5];
-console.log(h);
-h.unshift ("BAM");
-console.log(h);
-h.shift ();
-console.log(h);
-
 //Be deklaracijos paskelbtas kintamasis nepriklausomai nuo jo pozicijos blokuose tampa globaliu kintamuoju ir vengtina kurti tokius kintamuosius.
 
-
+//Įvestą funkciją galima iššaukti bet kurioje bloko vietoje. Įveskite 1-oje kodo eilutėje console.log (blokoNaudojimoPavyzdys2 (40, 4)); ir rezultatas bus pavaizduotas konsolėje nepaisant to, kad pati funkcija aprašyta vėlesnėse eilutėse.
+//Vengtina kurti to paties pavadinimo ar globalaus objekto pavadinimo funkcijas, metodus. 
