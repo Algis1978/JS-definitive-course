@@ -82,7 +82,7 @@ knyga1.turinys = {};
 console.log(knyga1);
 console.log(knyga1["išleidimo metai"]);
 console.log(knyga1.turinys);
-//Objekto savybė ištrinama naudojant delete raktažodį:
+//Objekto savybė ištrinama naudojant delete operatorių:
 let knyga2 = {
     autorius: "V. M. Tekerėjus",
     puslapiuSkaicius: 823,
@@ -125,7 +125,7 @@ console.log (gatvesNamuNumeriai[9]);
 console.log (gatvesNamuNumeriai.length);
 //Masyvo elemento ištrynimas:
 delete gatvesNamuNumeriai[2];
-//Naudojant delete raktažodį pozicijoje lieka undefined/empty elementas, tad šis trynimo būdas nenaudotinas.
+//Naudojant delete operatorių pozicijoje lieka undefined/empty elementas, tad šis trynimo būdas nenaudotinas.
 console.log (gatvesNamuNumeriai);
 
 // Tekstas turi masyvo savybių: - ilgį, simbolio numerį:
@@ -170,7 +170,7 @@ mas1.splice (2, 1, 12, 24, 36);
 console.log(mas1);//.splice pozicijoje 2 ištrina 1 elementą ir prideda nurodytuosius (12, 24, 36);
 mas1.splice (3, 2, "mes", "jie");
 console.log(mas1);
-//.splice galima naudoti pašalinat elementus iš masyvo vietoj delete raktažodžio ir nepaliekant tuščių pozicijų:
+//.splice galima naudoti pašalinat elementus iš masyvo vietoj delete operatoriaus ir nepaliekant tuščių pozicijų:
 mas1.splice(1, 2);
 console.log(mas1);//pirmoje masyvo pozicijoje ištrinti 2 elementai (poz. 2 ir 3);
 let h = mas1.concat(mas, gatvesNamuNumeriai);
