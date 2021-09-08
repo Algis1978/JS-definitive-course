@@ -12,7 +12,7 @@ console.log ("ĮŽANGA");
 //Kiti būdai pamatyti veikiantį JS kodą: HTML elementuose (per innerHTML komandą), HTML vaizde (per document.write komandą) ir perspėjimo languose (per window.alert komandą).
 //Programuojant reikia surinkti daug pasikartojančių tekstų ir tam padeda redaktoriuose įdiegtas Emmet programinis tekstų nuspėjimo įrankis, kuris, renkant tekstą, automatiškai parodo artimus pasirinkimo variantus.
 //Susipažinimui su JS programavimu pilnai tinka internetiniai ('online') redaktoriai, kurie dažniausiai turi HTML, CSS, JS kodų ir kodų veikimo peržiūros langus.
-//JS kodas, galintis grąžinti rezultatą, vadinamas ekspresija, tad '2+3' ir '5<2' yra ekspresijos. Duomenys, kuriuos naudoja JS, suskirstyti į tipus. Tai skaičiai (Number), tekstai (String), objektai, masyvai (Array), patvirtinimo/paneigimo (Boolean) ir kt. 
+//JS kodas, galintis grąžinti rezultatą, vadinamas ekspresija, tad '2+3' ir '5<2' yra ekspresijos. Duomenys, kuriuos naudoja JS, suskirstyti į tipus. Tai skaičiai (Number), tekstai (String), objektai, masyvai (Array), Būlio (Boolean) ir kt. 
 //Duomenys jungiami tarpusavyje operatoriais, kurių paprasčiausi yra matematiniai sudėties, daugybos ir kt. veiksmai. Operatoriais sujungti duomenys vadinami operandais. 
 //Platesnis JS kodas, kuris nustato, kaip panaudojamos ekspresijos, vadinamas steitmentais Ūar lietuviškiau - sakiniais). Paprasčiausias steitmentas - kintamajam priskirta ekspresija, pvz., 'l=2+3'.
 //Steitmentai vykdomi tuo eiliškumu, kuriuo užrašyti, ir gali būti jungiami į {} skliaustų blokus (angl. scope).
@@ -89,17 +89,43 @@ let knyga2 = {
 }
 delete knyga2["autorius"];
 console.log(knyga2);
-//.hasOwnProperty metodas patikrina, ar objekte yra tam tikro pavadinimo savybė:
-console.log (knyga2.hasOwnProperty("autorius"));//false (ne).
 
-//Su raktažodžiu "new" galima sukurti objekto tipo tekstus, skaičius ir boolean vertes:
+//Su raktažodžiu "new" galima sukurti objekto tipo tekstus, skaičius ir Būlio vertes:
 let z = new String ("niekada")
-console.log(typeof(knyga));
+console.log(typeof(z));
 z = new String (100);
-console.log(typeof(knyga));
+console.log(typeof(z));
 z = new Boolean ("false")
-console.log(typeof(knyga));
-//Tokie veiksmai yra vengtini.
+console.log(typeof(z));
+//Tokių kintamųjų sukūrimas yra vengtinas.
+
+console.log ("OBJEKTŲ ŠABLONŲ SUKŪRIMAS");
+//Paprasčiausia sukurti objektą su kintamojo deklaracija ir new raktažodį tiesiogiai įvedant jo savybes ir savybių vertes.
+//Tačiau kuriant daug panašių objektų patogiau turėti jų kūrimo šablonus.
+//Jų yra keliolika, vienas iš jų - funkcija, kuri grąžina objektą:
+function Medis (pavadinimas, aukštis, skersmuo, savivaldybė) {
+    return {
+        pavadinimas,
+        aukštis,
+        skersmuo,
+        savivaldybė, 
+        aprašymas: function () {return this.pavadinimas+" yra "+this.aukštis+" m aukščio, "+this.skersmuo+" m skersmens medis "+this.savivaldybė+" savivaldybėje."}
+    }
+}
+//Šios funkcijos sukurtas objektas turi keturias savybes ir vieną metodą.
+//Pvz.:
+let stelmuzesAzuolas = Medis("Stelmužės ąžuolas", "23", "3,5", "Zarasų");
+console.log (stelmuzesAzuolas);
+console.log (stelmuzesAzuolas.aprašymas());
+let rumsiskiuMiskoPusis = Medis("Rumšiškių miško pušis", "32", "4", "Kaišiadorių");
+console.log (rumsiskiuMiskoPusis);
+console.log (rumsiskiuMiskoPusis.aprašymas());
+
+console.log ("OBJEKTŲ METODAI");
+//Objektų metodai yra jų savybės savo vertėse turinčios funkciją, kuri veikia to paties objekto atžvilgiu.
+//Kai kurie metodai priskiriami kartu su objekto sukūrimu, kitus programuotojas gali sukurti ir priskirti.
+//Kartu susikūrusius metodus galima pasitikrinti naršyklės konsolės lange išskleidus rodyklėlę ties objektu ir po to išsklidu kitą rodyklėlę ties [[Prototype]]. Pvz., .hasOwnProperty metodas patikrina, ar objekte yra tam tikro pavadinimo savybė:
+console.log (knyga2.hasOwnProperty("autorius"));//false (ne).
 
 console.log ("MASYVAI (arrays)");
 //Masyvai - numeruotų duomenų rinkiniai.
@@ -235,7 +261,7 @@ skaicius %= 3; //priskiria dalybos iš 3 liekaną.
 console.log(skaicius);
 
 console.log ("PALYGINIMO OPERATORIAI");
-//Palyginimo operatorių veiksmai gražina boolean vertes 'true'(teisinga) ir 'false' (neteisinga).
+//Palyginimo operatorių veiksmai gražina Būlio vertes 'true'(teisinga) ir 'false' (neteisinga).
 let x = 10, y = 5; // = yra kintamojo deklaracijos simbolis, === yra griežtos lygybės operatorius, == yra negriežtos lygybės operatorius. 
 console.log (x===y); //false.
 console.log (typeof(x===y));//palyginimo duomens tipas.
@@ -262,7 +288,7 @@ console.log(z);
 
 console.log ("LOGINIAI OPERATORIAI");
 // Loginiai operatoriai && - ir, || - ar, ! - priešingai,
-//naudojami su boolean vertėmis.
+//naudojami su Būlio vertėmis.
 console.log ("2"!=2); //false.
 console.log ((x!==y)&&(x > y)); //true (2 true, && operatorius grąžins true, kai abiejų pusių salygos yra true).
 console.log ((x!==y)&&(x <= y)); //false (1 true, 1 false).
@@ -359,7 +385,7 @@ console.log (0o123);//aštuntainės sistemos skaičiai;
 console.log (0xac);// šešioliktainės sistemos skaičiai;
 //Aiškumo dėlei didelius skaičius galima skaidyti su _ simboliu:
 console.log (100_100.234_345);
-//JS trupmeniniai skaičiai iš binarinės bazės, pavyzdžiui, 1/64, 1/2, yra tikslūs, tačiau labiau įprasti dešimtainės bazės trupmeniniai skaičiai, pvz.: 0,1 ar 0,001, yra tik artimi tikrosioms vertėms, kas gali sudaryti neaiškumų ypač su boolean vertėmis susijusiose operacijose.
+//JS trupmeniniai skaičiai iš binarinės bazės, pavyzdžiui, 1/64, 1/2, yra tikslūs, tačiau labiau įprasti dešimtainės bazės trupmeniniai skaičiai, pvz.: 0,1 ar 0,001, yra tik artimi tikrosioms vertėms, kas gali sudaryti neaiškumų ypač su Būlio vertėmis susijusiose operacijose.
 //Dalijimas iš nulio grąžina 'Infinity' vertę.
 console.log (10/0);
 //Nulio dalijimas iš nulio grąžina NaN vertę.
@@ -545,7 +571,7 @@ console.log(undefined===null);//false
 //0 ir -0 yra vertės, kai JS negali suprasti skaičiaus, esančio per arti nulio iš teigiamos ir neigiamos pusių.
 h = -1e-100000;
 console.log (h);
-//boolean operacijose undefined, -0, 0, null, NaN ir "" (teksto nebūvimas) patys savaime grąžina 'false' vertes, kai kiti operandai grąžina 'true' vertes.
+//Būlio operacijose undefined, -0, 0, null, NaN ir "" (teksto nebūvimas) patys savaime grąžina 'false' vertes, kai kiti operandai grąžina 'true' vertes.
 h = function (data) {
     if (null && 5===5){ //operandas null grąžino 'false'
         return data
@@ -566,7 +592,7 @@ h = function (data) {
 console.log (h (5));
 
 console.log ("PAPRASTIEJI IR OBJEKTINIAI TIPAI")
-//Paprastaisiais duomenų tipais vadinami tipai su nekeičiamomis vertėmis: skaičiai, tekstai, boolean ir spec. vertės.
+//Paprastaisiais duomenų tipais vadinami tipai su nekeičiamomis vertėmis: skaičiai, tekstai, Būlio ir spec. vertės.
 // Objektiniai tipai: objektai, masyvai, funkcijos, kurių duomenys gali būti keičiami.
 // Išimtys: null, kuris yra objektas, ir undefined, kurio tipas yra undefined (nežinomas).
 // Duomenų tipą galima pasitikrinti operatoriumi typeof:
@@ -835,3 +861,35 @@ for (var i = 0; i<contacts.length; i++){
 
 console.log (lookUpProfile("Akira", "likes"));
 console.log (lookUpProfile("Sherlock", "likes"));
+
+var sk = 2;
+while (sk <= 100) {
+ var daliklis = 2;
+ var pirminis = true;
+    while (daliklis < sk) {
+        if (sk % daliklis == 0) {
+        pirminis = false;
+        }
+        daliklis += 1;
+     }
+    if (pirminis) {
+    console.log(sk);
+    }
+    sk += 1;
+}
+
+let prima = []
+let i = 2;
+while (i<=100) {
+    let pirminis
+    let d = 2
+    while (d<i){
+        if (i%d==0){
+
+        }
+        else {pirminis = i}
+        d+=1
+    }
+    prima.push(i)
+}
+console.log(prima);
