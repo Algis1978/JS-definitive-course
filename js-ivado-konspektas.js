@@ -817,6 +817,7 @@ console.log(h);
 //Vengtina kurti to paties pavadinimo ar globalaus objekto pavadinimo funkcijas, metodus. 
 
 // Setup
+// Setup
 var contacts = [
     {
         "firstName": "Akira",
@@ -843,21 +844,23 @@ var contacts = [
         "likes": ["JavaScript", "Gaming", "Foxes"]
     }
 ];
-console.log (contacts.length);
+
 
 function lookUpProfile(name, prop) {
   // Only change code below this line
-for (var i = 0; i<contacts.length; i++){
-    if (contacts[i]["firstName"]=name&&contacts[i][prop]) {
-        return contacts[i][prop];
+    for (let i = 0; i<contacts.length; i++) {
+        if (contacts[i]["firstName"]==name) {
+            if (contacts[i][prop]) {return contacts[i][prop]}
+            else {return "No such property"} 
+        }               
     }
-    else  {
-
-
-    }
-}
+    return "No such contact"
   // Only change code above this line
 }
 
 console.log (lookUpProfile("Akira", "likes"));
 console.log (lookUpProfile("Sherlock", "likes"));
+console.log (lookUpProfile("Bob", "number"));
+console.log (lookUpProfile("Bob", "potato"));
+console.log (lookUpProfile("Akira", "address"));
+console.log (lookUpProfile("Kristian", "lastName"));
