@@ -861,35 +861,3 @@ for (var i = 0; i<contacts.length; i++){
 
 console.log (lookUpProfile("Akira", "likes"));
 console.log (lookUpProfile("Sherlock", "likes"));
-
-var sk = 2;
-while (sk <= 100) {
- var daliklis = 2;
- var pirminis = true;
-    while (daliklis < sk) {
-        if (sk % daliklis == 0) {
-        pirminis = false;
-        }
-        daliklis += 1;
-     }
-    if (pirminis) {
-    console.log(sk);
-    }
-    sk += 1;
-}
-
-let prima = []
-let i = 2;
-while (i<=100) {
-    let pirminis
-    let d = 2
-    while (d<i){
-        if (i%d==0){
-
-        }
-        else {pirminis = i}
-        d+=1
-    }
-    prima.push(i)
-}
-console.log(prima);
