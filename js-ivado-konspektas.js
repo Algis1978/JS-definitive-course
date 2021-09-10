@@ -100,8 +100,8 @@ console.log(typeof(z));
 //Tokių kintamųjų sukūrimas yra vengtinas.
 
 console.log ("OBJEKTŲ ŠABLONŲ SUKŪRIMAS");
-//Paprasčiausia sukurti objektą su kintamojo deklaracija ir new raktažodį tiesiogiai įvedant jo savybes ir savybių vertes.
-//Tačiau kuriant daug panašių objektų patogiau turėti jų kūrimo šablonus.
+//Paprasčiausia sukurti objektą su kintamojo deklaracija arba new raktažodį tiesiogiai įvedant jo savybes ir savybių vertes.
+//Kuriant daug panašių objektų patogiau turėti jų kūrimo šablonus.
 //Jų yra keliolika, vienas iš jų - funkcija, kuri grąžina objektą:
 function Medis (pavadinimas, aukštis, skersmuo, savivaldybė) {
     return {
@@ -124,8 +124,15 @@ console.log (rumsiskiuMiskoPusis.aprašymas());
 console.log ("OBJEKTŲ METODAI");
 //Objektų metodai yra jų savybės savo vertėse turinčios funkciją, kuri veikia to paties objekto atžvilgiu.
 //Kai kurie metodai priskiriami kartu su objekto sukūrimu, kitus programuotojas gali sukurti ir priskirti.
-//Kartu susikūrusius metodus galima pasitikrinti naršyklės konsolės lange išskleidus rodyklėlę ties objektu ir po to išsklidu kitą rodyklėlę ties [[Prototype]]. Pvz., .hasOwnProperty metodas patikrina, ar objekte yra tam tikro pavadinimo savybė:
+//Kartu susikūrusius metodus galima pasitikrinti naršyklės konsolės lange išskleidus rodyklėlę ties objektu ir po to išskleidus kitą rodyklėlę ties [[Prototype]]. 
+//Pvz., .hasOwnProperty metodas patikrina, ar objekte yra tam tikro pavadinimo savybė:
 console.log (knyga2.hasOwnProperty("autorius"));//false (ne).
+//Objekto savybių vertes ir savybių metodų aprašymus galima peržvelgti naudojant 'for ... in' ciklą:
+for (i in stelmuzesAzuolas) {
+    console.log(stelmuzesAzuolas[i])
+}
+
+
 
 console.log ("MASYVAI (arrays)");
 //Masyvai - numeruotų duomenų rinkiniai.
@@ -141,6 +148,17 @@ console.log (gatvesNamuNumeriai[2]);
 console.log (gatvesNamuNumeriai.length);
 //Pakutinio masyvo elemento pasiekimas:
 console.log (gatvesNamuNumeriai[gatvesNamuNumeriai.length-1]);
+
+//Tuščio masyvo sukūrimas:
+let tusciasMasyvas = [];
+console.log(tusciasMasyvas);
+//Tuščio masyvo su tuščiomis savybėmis sukūrimas:
+tusciasMasyvas = [,,,,,];//penkių tuščių elementų masyvas.
+console.log(tusciasMasyvas);
+//Tuščio masyvo sukūrimas su nurodytu elementų eilutės ilgiu:
+tusciasMasyvas = new Array(4);//keturių tuščių elementų masyvas.
+console.log(tusciasMasyvas);
+
 
 //Masyvo elementų įvedimas arba keitimas:
 gatvesNamuNumeriai[0]=23;
@@ -161,12 +179,6 @@ z = "visada";
 console.log (z.length); //teksto ilgis.
 console.log (z[3]); //ketvirta raidė tekste.
 
-//Tiek objektai, tiek masyvai gali būti tušti:
-const tusciasObjektas = {};
-const tusciasMasyvas = [];
-console.log (tusciasObjektas);
-console.log (tusciasMasyvas);
-//Tiek objektai, tiek masyvai savo sudėtyje gali turėti kitus objektus ir masyvus.
 //Pasiekti sudėtinių objektų ir masyvų savybes naudojama daugybinė taškų ir [] skliaustų notacija.
 //Įvedame naują objektą į objektą knyga3.
 let knyga3 = {
@@ -392,7 +404,7 @@ console.log (10/0);
 console.log (0/0);
 
 console.log("NUMBER OBJEKTAS, PARSEINT IR PARSEFLOAT METODAI")
-//Number() funkcija keičia kintamųjų vertes į skaičius:
+//Number() konstrukcinis objektas keičia kintamųjų vertes į skaičius:
 console.log (Number("100"));// 100
 console.log (Number(true));// 1
 console.log (Number(false));// 0
@@ -592,9 +604,10 @@ h = function (data) {
 console.log (h (5));
 
 console.log ("PAPRASTIEJI IR OBJEKTINIAI TIPAI")
-//Paprastaisiais duomenų tipais vadinami tipai su nekeičiamomis vertėmis: skaičiai, tekstai, Būlio ir spec. vertės.
-// Objektiniai tipai: objektai, masyvai, funkcijos, kurių duomenys gali būti keičiami.
-// Išimtys: null, kuris yra objektas, ir undefined, kurio tipas yra undefined (nežinomas).
+//Paprastaisiais duomenų tipais vadinami tipai su nekeičiamomis vertėmis: skaičiai, tekstai, Būlio, null ir undefined.
+// Objektiniai tipai: objektai, masyvai, funkcijos, RegExp, Math, datos - kurių duomenys gali būti keičiami.
+// Null tipo duomenų yra tik vienas 'null', undefined tipo duomenų yra tik vienas 'undefined', Būlio tipo duomenų yra tik du: 'true' ir 'false'.
+//Tekstų, skaičių ir Būlio duomenis galima deklaruoti esant objektais su raktažodžiu 'new'. Verčių 'null' ir 'undefined' tipų pakeisti negalima.
 // Duomenų tipą galima pasitikrinti operatoriumi typeof:
 console.log(typeof "12");
 console.log(typeof ["12", 15]);
@@ -678,10 +691,12 @@ kuboAukstis = 12, kuboPlotis = 5, kuboIlgis = 6;
 console.log(kuboAukstis);
 kuboTuris = kuboAukstis*kuboPlotis*kuboIlgis;
 console.log (kuboTuris.toFixed (2));
+
 //JS draudžia paskelbti tokio pat pavadinimo kintamuosius let ir const, išskyrus naudojimą vaikiniuose blokuose.
 //Kintamasis var yra iš senesnės nei ES6 JS versijos. Jo vertė persiduoda iš bloko ribų, o paskelbus bendrame bloke įgyja globalią vertę. Jį taip pat galima deklaruoti kelis kartus. Tame pačiame bloke galima naudoti var kintamąjį prieš jį deklaruojant. Šiuo metu JS var kintamieji nebenaudotini.
 //Paskelbus kintamąjį be deklaracijos jis tampa globaliu kintamuoju ir yra vengtinas:
 u = 3;
+//Naudojant "use strict" JS neleis įvesti kintamojo be deklaracijos.
 kuboTurisBlogas = kuboAukstis*kuboPlotis*kuboIlgis*u;
 console.log (kuboTurisBlogas.toFixed (2));
 //tokius kintamuosius galima ištrinti:
@@ -864,3 +879,165 @@ console.log (lookUpProfile("Bob", "number"));
 console.log (lookUpProfile("Bob", "potato"));
 console.log (lookUpProfile("Akira", "address"));
 console.log (lookUpProfile("Kristian", "lastName"));
+
+//ex. 98 rekursijos funkcija:
+function countup(n) {
+    if (n < 1) {
+      return [];
+    } else {
+      const countArray = countup(n - 1);
+      countArray.push(n);
+      return countArray;
+    }
+  }
+  console.log(countup(5));
+  console.log (typeof(autoriausSavybe));
+
+  for (i in stelmuzesAzuolas) {
+      console.log(stelmuzesAzuolas[i])
+  }
+  for (i in stelmuzesAzuolas) {
+    if (stelmuzesAzuolas[i]!=="Stelmužės ąžuolas"){
+    } else{ h = "Stelmužės ąžuolas"  }
+}
+console.log(h);
+  
+  h = [];
+  for (i in stelmuzesAzuolas) {
+    h.push(stelmuzesAzuolas[i])
+}
+console.log(h);
+
+//Namų darbas 1.
+//Perkeisti duoto masyvo elementus naujame masyve, kad jie atrodytų tarsi judantys per vieną elementą kairėn ir dešinėn.
+h = [11, 12, 13, 14, 15];
+//sukuriamas naujas 5 elementų masyvas su 5 tuščių elementų masyvu kiekviename elemente. 
+let hnew = new Array (h.length);
+for (i = 0; i<h.length; i++)
+    {hnew[i]=new Array(h.length)}
+    console.log(hnew);
+
+for (let i = 0; i<h.length; i++)
+    for (let j = 0; j<h.length; j++)
+        hnew[i][j]=h[(i+j)%h.length]
+console.log(hnew); 
+
+//Namų darbas 2.
+//Surūšiuoti masyvo skaičius didėjančia ir mažėjančia tvarkomis:
+h = [45, 8, -8, -15, 1, 14, 2, 33];
+
+//Namų darbas 3
+/*
+8 masinos su savybem:
+pavadinimas
+kelias
+greitis
+ 
+vyksta lenktynes (ciklas):
+kiekvieno ciklo metu kiekviena masina pakeicia savo greiti random (-5..5) km
+atbuliniu masina vaziuot negali
+kiekvieno ciklo metu kiekviena masina pavaziuoja per tiek, koks yra jos greitis
+ 
+lenktynes baigiasi, kai bent viena masina nuvaziuoja 1000 km
+ 
+pabaigoj atspausdinam visa turnyrine lentele isrusiuota pagal nuvaziuota kelia
+ 
+*)komentatorius
+*/
+
+
+var masinytes = [
+    {pavadinimas: 'Pirma', kelias: 0, greitis: 0},
+    {pavadinimas: 'Antra', kelias: 0, greitis: 0},
+    {pavadinimas: 'Trečia', kelias: 0, greitis: 0},
+    {pavadinimas: 'Ketvirta', kelias: 0, greitis: 0},
+    {pavadinimas: 'Penkta', kelias: 0, greitis: 0},
+    {pavadinimas: 'Šešta', kelias: 0, greitis: 0},
+    {pavadinimas: 'Septinta', kelias: 0, greitis: 0},
+    {pavadinimas: 'Aštunta', kelias: 0, greitis: 0}
+];
+// console.log(masinytes[3]);
+
+// const masinos = [
+//     {
+//         pavadinimas: "pirma",
+//         kelias: 0,
+//         greitis: 0
+//     },
+//     {
+//         pavadinimas: "antra",
+//         kelias: 0,
+//         greitis: 0
+//     },
+//     {
+//         pavadinimas: "trecia",
+//         kelias: 0,
+//         greitis: 0
+//     },
+//     {
+//         pavadinimas: "ketvirta",
+//         kelias: 0,
+//         greitis: 0
+//     },
+//     {
+//         pavadinimas: "penkta",
+//         kelias: 0,
+//         greitis: 0
+//     },
+//     {
+//         pavadinimas: "sesta",
+//         kelias: 0,
+//         greitis: 0
+//     },
+//     {
+//         pavadinimas: "septinta",
+//         kelias: 0,
+//         greitis: 0
+//     },
+//     {
+//         pavadinimas: "astunta",
+//         kelias: 0,
+//         greitis: 0
+//     },
+// ];
+// let lyderis = 0;
+// let check = 100;
+
+// // lenktyniu ciklas
+// while (masinos[lyderis].kelias < 1000) {
+//     // visos masinos pakeicia greiti ir pavaziuoja
+//     for(let i = 0; i < masinos.length; i++) {
+//         // pakeiciam masinos greiti
+//         masinos[i].greitis += Math.trunc(Math.random() * 11 - 5);
+//         // atbulinio ner
+//         if (masinos[i].greitis < 0) {
+//             masinos[i].greitis = 0;
+//         }
+//         // pavaziuojam
+//         masinos[i].kelias += masinos[i].greitis;
+//         // ir paziurim ji nuvaziavusi daugiau uz esama lyderi
+//         if (masinos[i].kelias > masinos[lyderis].kelias) {
+//             // i-toji masina tampa nauju lyderiu
+//             lyderis = i;
+//         }
+//     }
+//     // tikrinam ar lyderis nuvaziavo dar 100 km
+//     if (masinos[lyderis].kelias > check) {
+//         console.log("siuo metu pirmauja", masinos[lyderis]);
+//         check += 100;
+//     }
+//     // console.log(masinos);
+//     // console.log("----------------");
+// }
+// // surusiuojam turnyrine lentele
+// for (let i = 0; i < masinos.length - 1; i++) {
+//     for (let j = i + 1; j < masinos.length; j++) {
+//         if (masinos[i].kelias < masinos[j].kelias) {
+//             let tmp = masinos[i];
+//             masinos[i] = masinos[j];
+//             masinos[j] = tmp;
+//         }
+//     }
+// }
+
+// console.log(masinos);
