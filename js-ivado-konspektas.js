@@ -121,6 +121,67 @@ let rumsiskiuMiskoPusis = Medis("Rumšiškių miško pušis", "32", "4", "Kaiši
 console.log (rumsiskiuMiskoPusis);
 console.log (rumsiskiuMiskoPusis.aprašymas());
 
+//Objektų prototipo šablono sukūrimas per constructor funkciją:
+function Asmuo (vardas, pavardė, amžius, lytis) {
+    this.vardas = vardas;
+    this.pavardė = pavardė;
+    this.amžius = amžius;
+    this.lytis = lytis;
+    this.asmensAprašymas = function () {return vardas+" "+pavardė+" yra "+amžius+" amžiaus "+lytis+"."};
+}
+//Su constructor funkcija sukuriama objekto prototipo šablonas, iš kurio išvestiniai objektai paveldės savybes ir metodus. 
+//Raktažodis this nurodo kuriamo objekto savybes.
+let asmuo1 = new Asmuo ("Tomas", "Lukaitis", "34", "vyras");
+console.log (asmuo1);
+asmuo1.asmensAprašymas();
+console.log(asmuo1.asmensAprašymas());
+
+// Į objekto prototipą vėliau galima įvesti naujų savybių:
+Asmuo.prototype.pilietybė = "lietuvis (-ė)";
+console.log(asmuo1.pilietybė);
+// Į objekto prototipą vėliau galima įvesti naujų metodų:
+Asmuo.prototype.pilnasVardas = function () {return this.vardas+" "+this.pavardė};
+//Šie metodai taps prieinami visiems objektams, paveldintiems šablono prototipą.
+console.log(asmuo1.pilnasVardas());
+
+//Objektų šablono sukūrimas per class raktažodį. Tai ES6 sintaksės metodas ir nesprantamas senesnėse ES5 JS versijas palaikančiose naršyklėse.
+class AsmuoKitas {
+    constructor (vardas, pavardė, amžius, lytis){
+        this.vardas = vardas;
+        this.pavardė = pavardė;
+        this.amžius = amžius;
+        this.lytis = lytis;
+    }
+        asmensAprašymas = function () {return this.vardas+" "+this.pavardė+" yra "+this.amžius+" amžiaus "+this.lytis+"."
+        };
+}
+let asmuo2 = new AsmuoKitas ("Tomas", "Lukaitis", "34", "vyras");
+console.log (asmuo2);
+asmuo2.asmensAprašymas();
+console.log(asmuo2.asmensAprašymas());
+//Naujos savybės ir metodai įvedam  prototipą kaip ir constructor šablono atveju
+AsmuoKitas.prototype.pilietybė = "lietuvis (-ė)";
+console.log(asmuo2.pilietybė);
+AsmuoKitas.prototype.pilnasVardas = function () {return this.vardas+" "+this.pavardė};
+console.log(asmuo2.pilnasVardas());
+
+console.log ("OBJEKTŲ SAVYBIŲ SAVYBĖS");
+//Į objektą galima įvesti arba pakeisti savybes, kurių savybes programuotojas gali pats nustatyti per Object.defineProperty metodą:
+Object.defineProperty(asmuo2, "pilietybė", {
+    enumerable: true, // jei false, savybė nebus rodoma tarp objekto savybių.
+    configurable: true,
+    writable: true, // jei false, savybės vertė bu nepakeičiama.
+    value: "lietuvis (-ė)"
+});
+console.log(asmuo2.pilietybė);
+//Object.freeze () funkcija pavers objektą nekičiamu.
+Object.freeze (asmuo2);
+asmuo2.tarmė = "žemaitis (-ė)";
+console.log (asmuo2.tarmė);
+//Bet savybės įvedimas per prototipą persiduoda:
+AsmuoKitas.prototype.gimimo_vieta = "Klaipėda";
+console.log (asmuo2.gimimo_vieta);
+
 console.log ("OBJEKTŲ METODAI");
 //Objektų metodai yra jų savybės savo vertėse turinčios funkciją, kuri veikia to paties objekto atžvilgiu.
 //Kai kurie metodai priskiriami kartu su objekto sukūrimu, kitus programuotojas gali sukurti ir priskirti.
@@ -131,8 +192,6 @@ console.log (knyga2.hasOwnProperty("autorius"));//false (ne).
 for (i in stelmuzesAzuolas) {
     console.log(stelmuzesAzuolas[i])
 }
-
-
 
 console.log ("MASYVAI (arrays)");
 //Masyvai - numeruotų duomenų rinkiniai.
@@ -782,7 +841,7 @@ console.log ("GLOBALUS OBJEKTAS")
 console.log(typeof(globalThis));
 console.log(globalThis);
 
-console.log ("Blokas")
+console.log ("BLOKAS")
 //Blokas (angl. scope) yra kodo segmentas kuriame galima naudoti tam tikrą kintamųjų rinkinį.
 //Šiuo atveju kintamieji yra deklaruoti kintamieji, objektai ir funkcijos bei funkcijų argumentai.
 //Globaliame bloke įvesti kintamieji yra pasiekiami iš bet kurios kodo vietos.
@@ -908,136 +967,99 @@ console.log(h);
 }
 console.log(h);
 
-//Namų darbas 1.
-//Perkeisti duoto masyvo elementus naujame masyve, kad jie atrodytų tarsi judantys per vieną elementą kairėn ir dešinėn.
-h = [11, 12, 13, 14, 15];
-//sukuriamas naujas 5 elementų masyvas su 5 tuščių elementų masyvu kiekviename elemente. 
-let hnew = new Array (h.length);
-for (i = 0; i<h.length; i++)
-    {hnew[i]=new Array(h.length)}
-    console.log(hnew);
-
-for (let i = 0; i<h.length; i++)
-    for (let j = 0; j<h.length; j++)
-        hnew[i][j]=h[(i+j)%h.length]
-console.log(hnew); 
-
-//Namų darbas 2.
-//Surūšiuoti masyvo skaičius didėjančia ir mažėjančia tvarkomis:
-h = [45, 8, -8, -15, 1, 14, 2, 33];
-
-//Namų darbas 3
-/*
-8 masinos su savybem:
-pavadinimas
-kelias
-greitis
- 
-vyksta lenktynes (ciklas):
-kiekvieno ciklo metu kiekviena masina pakeicia savo greiti random (-5..5) km
-atbuliniu masina vaziuot negali
-kiekvieno ciklo metu kiekviena masina pavaziuoja per tiek, koks yra jos greitis
- 
-lenktynes baigiasi, kai bent viena masina nuvaziuoja 1000 km
- 
-pabaigoj atspausdinam visa turnyrine lentele isrusiuota pagal nuvaziuota kelia
- 
-*)komentatorius
-*/
 
 
-var masinytes = [
-    {pavadinimas: 'Pirma', kelias: 0, greitis: 0},
-    {pavadinimas: 'Antra', kelias: 0, greitis: 0},
-    {pavadinimas: 'Trečia', kelias: 0, greitis: 0},
-    {pavadinimas: 'Ketvirta', kelias: 0, greitis: 0},
-    {pavadinimas: 'Penkta', kelias: 0, greitis: 0},
-    {pavadinimas: 'Šešta', kelias: 0, greitis: 0},
-    {pavadinimas: 'Septinta', kelias: 0, greitis: 0},
-    {pavadinimas: 'Aštunta', kelias: 0, greitis: 0}
-];
-// console.log(masinytes[3]);
+function countup(n) {
+    if (n < 1) {
+      return [];
+    } else {
+      let countArray = countup(n - 1);
+      console.log(countArray);
+      countArray.push(n);
+      console.log(countArray);
+      return countArray;
+    }
+  }
+  console.log(countup(1));
 
-// const masinos = [
-//     {
-//         pavadinimas: "pirma",
-//         kelias: 0,
-//         greitis: 0
-//     },
-//     {
-//         pavadinimas: "antra",
-//         kelias: 0,
-//         greitis: 0
-//     },
-//     {
-//         pavadinimas: "trecia",
-//         kelias: 0,
-//         greitis: 0
-//     },
-//     {
-//         pavadinimas: "ketvirta",
-//         kelias: 0,
-//         greitis: 0
-//     },
-//     {
-//         pavadinimas: "penkta",
-//         kelias: 0,
-//         greitis: 0
-//     },
-//     {
-//         pavadinimas: "sesta",
-//         kelias: 0,
-//         greitis: 0
-//     },
-//     {
-//         pavadinimas: "septinta",
-//         kelias: 0,
-//         greitis: 0
-//     },
-//     {
-//         pavadinimas: "astunta",
-//         kelias: 0,
-//         greitis: 0
-//     },
-// ];
-// let lyderis = 0;
-// let check = 100;
+  function countdown(n){
+    if (n<1) {
+      return [];
+    }
+    let myArray = [];
+    myArray.push(n);
+    myArray = countdown (n-1);
+    return myArray;
+  }
+  console.log(countdown(10));
 
-// // lenktyniu ciklas
-// while (masinos[lyderis].kelias < 1000) {
-//     // visos masinos pakeicia greiti ir pavaziuoja
-//     for(let i = 0; i < masinos.length; i++) {
-//         // pakeiciam masinos greiti
-//         masinos[i].greitis += Math.trunc(Math.random() * 11 - 5);
-//         // atbulinio ner
-//         if (masinos[i].greitis < 0) {
-//             masinos[i].greitis = 0;
-//         }
-//         // pavaziuojam
-//         masinos[i].kelias += masinos[i].greitis;
-//         // ir paziurim ji nuvaziavusi daugiau uz esama lyderi
-//         if (masinos[i].kelias > masinos[lyderis].kelias) {
-//             // i-toji masina tampa nauju lyderiu
-//             lyderis = i;
-//         }
-//     }
-//     // tikrinam ar lyderis nuvaziavo dar 100 km
-//     if (masinos[lyderis].kelias > check) {
-//         console.log("siuo metu pirmauja", masinos[lyderis]);
-//         check += 100;
-//     }
-//     // console.log(masinos);
-//     // console.log("----------------");
-// }
-// // surusiuojam turnyrine lentele
-// for (let i = 0; i < masinos.length - 1; i++) {
-//     for (let j = i + 1; j < masinos.length; j++) {
-//         if (masinos[i].kelias < masinos[j].kelias) {
-//             let tmp = masinos[i];
-//             masinos[i] = masinos[j];
-//             masinos[j] = tmp;
-//         }
-//     }
-// }
 
-// console.log(masinos);
+  function echo(name, num) {
+    console.log("Evaluating the " + name + " side");
+    return num;
+}
+// Notice the division operator (/)
+console.log(echo("left", 6) / echo("right", 2));
+
+function echo(name, num) {
+    console.log("Evaluating the " + name + " side");
+    return num;
+}
+// Notice the exponentiation operator (**)
+console.log(echo("left", 2) ** echo("right", 3));
+
+function echo(name, num) {
+    console.log("Evaluating the " + name + " side");
+    return num;
+}
+// Notice the division operator (/)
+console.log(echo("left", 6) / echo("middle", 2) / echo("right", 3));
+
+function echo(name, num) {
+    console.log("Evaluating the " + name + " side");
+    return num;
+}
+// Notice the exponentiation operator (**)
+console.log(echo("left", 2) ** echo("middle", 3) ** echo("right", 2));
+
+function echo(name, num) {
+    console.log("Evaluating the " + name + " side");
+    return num;
+}
+// Notice the parentheses around the left and middle exponentiation
+console.log((echo("left", 2) ** echo("middle", 3)) ** echo("right", 2));
+
+function recurseForever(a) {
+    if (a>=10) {
+        return a;
+    }
+    console.log (a);
+    return recurseForever(a + 1);
+  }
+  const result = recurseForever(5);
+  console.log(result);
+
+  function countdown(n){
+    if (n<1) {
+      return [];
+    }
+    const myArray = countdown(n-1);
+    myArray.unshift(n);
+    return myArray;
+  }
+  console.log(countdown (5));
+
+  function rangeOfNumbers(startNum, endNum) {
+    if (startNum > endNum)
+    {return [];}
+    else {
+      let myArray = rangeOfNumbers(startNum+1, endNum);
+      myArray.unshift (startNum);
+      return myArray
+    }
+  };
+  console.log(rangeOfNumbers (5, 9));
+
+  const myConcat = (arr1, arr2) => arr1.concat(arr2);
+
+  console.log(myConcat ([5, 6, 7], {"lia-lia":"BOOM"}));
