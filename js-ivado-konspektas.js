@@ -169,15 +169,17 @@ console.log ("OBJEKTŲ SAVYBIŲ SAVYBĖS");
 //Į objektą galima įvesti arba pakeisti savybes, kurių savybes programuotojas gali pats nustatyti per Object.defineProperty metodą:
 Object.defineProperty(asmuo2, "pilietybė", {
     enumerable: true, // jei false, savybė nebus rodoma tarp objekto savybių.
-    configurable: true,
-    writable: true, // jei false, savybės vertė bu nepakeičiama.
+    configurable: true,// jei false, savybė nebus keičiama ar ištrinama.
+    writable: true, // jei false, savybės vertė bus nepakeičiama.
     value: "lietuvis (-ė)"
 });
 console.log(asmuo2.pilietybė);
-//Object.freeze () funkcija pavers objektą nekičiamu.
+//Object.freeze () funkcija pavers objektą nekeičiamu.
 Object.freeze (asmuo2);
 asmuo2.tarmė = "žemaitis (-ė)";
 console.log (asmuo2.tarmė);
+delete asmuo2.vardas;
+console.log (asmuo2.vardas);
 //Bet savybės įvedimas per prototipą persiduoda:
 AsmuoKitas.prototype.gimimo_vieta = "Klaipėda";
 console.log (asmuo2.gimimo_vieta);
