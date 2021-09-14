@@ -174,6 +174,18 @@ Object.defineProperty(asmuo2, "pilietybė", {
     value: "lietuvis (-ė)"
 });
 console.log(asmuo2.pilietybė);
+
+//get ir set funkcijos.
+//Vietoj 'writable' ir 'value' savybių galimanaudoti funkcijas 'get' ir 'set'. Tokiu atveju savybę aprašys šios funkcijos:
+let asmuo3 = new AsmuoKitas ("Jurga", "Sedytė", "30", "moteris");
+Object.defineProperty(asmuo3, "amžius", {
+    enumerable: true, 
+    configurable: true,
+    get: function (){return 100},
+    set: function () {
+
+    }
+});
 //Object.freeze () funkcija pavers objektą nekeičiamu.
 Object.freeze (asmuo2);
 asmuo2.tarmė = "žemaitis (-ė)";
@@ -219,7 +231,6 @@ console.log(tusciasMasyvas);
 //Tuščio masyvo sukūrimas su nurodytu elementų eilutės ilgiu:
 tusciasMasyvas = new Array(4);//keturių tuščių elementų masyvas.
 console.log(tusciasMasyvas);
-
 
 //Masyvo elementų įvedimas arba keitimas:
 gatvesNamuNumeriai[0]=23;
@@ -402,13 +413,13 @@ console.log(suma());// rezultatas NaN, visi funkcijos parametrai - undefined.
 console.log(suma);//nepateikus argumentų ekspresijos, onsole.log grąžins funkcijos aprašymą.
 console.log(suma(5, 7, 8, 10));// rezultatas 20, funkcija neturėjo, kur panaudoti ketvirtą parametrą.
 
-//Tačiau funkcijai perduoti perteklinia argumentai nieku neingsta. Jie yra įrašomi į funkcijos objekto 'arguments' savybes.
+//Tačiau funkcijai perduoti pertekliniai argumentai niekur nedingsta. Jie yra įrašomi į funkcijos objekto 'arguments' (kitaip 'args') savybes.
 function kitaSuma (a, b, c) {
     console.log (arguments);
     return a+b+c;
 }
 kitaSuma (0, 2, 4, 6, 8, 10);
-//'arguments' yra masyvas su indeksuotomis argumentų pozicijomis, tad galima parašyti funkciją, kuri dirbtų tik su perduotais argumentais.
+//'arguments' yra objektas su indeksuotomis argumentų pozicijomis kaip masyve, tad galima parašyti funkciją, kuri dirbtų tik su perduotais argumentais.
 function išvestiArgumentus0ir3 () {
     let l = [];
     l.push(arguments[0])
@@ -418,6 +429,18 @@ function išvestiArgumentus0ir3 () {
 console.log (išvestiArgumentus0ir3(5, 2, 3, 9, 8, 4));
 //Funkcijos objektas 'arguments' pasiekiamas tik iš funkcijos vidaus.
 console.log (suma.arguments);
+
+//Rodyklinė funkcija yra trumpesnis funkcijos užrašymas, kai ji panadojama tik vieną kartą ar tik su vienu kintamuoju) ir nebus naudojama daugiau.
+//Rodyklinėje funkcijoje nebereikia panaudoti raktažodžių'function' ir 'return', tačiau rodyklinės funkcijos netinkamos naudoti objektų metodams nustatyti, nes neveikia su raktažodžiu 'this'. 
+//Rodyklinės funkcijos argumentai nurodomi prieš => ženklą ir turinys - už jo, turiniui nebereikia {} skliaustų.
+const rodFunkcija = (a, b) => (a*b)/(a-b);
+console.log(rodFunkcija(5, 2));
+
+//Tarp funkcijų parametrams galima priskirti pastovų argumentą, kuris persiduos funkcijos turiniui, jei nebus pateiktas kitoks argumentas arba pateiktas jo vietoje 'undefined'.
+const parFunkcija = (a = Math.PI) => a+" yra trupmeninis skaičius";
+console.log(parFunkcija(0.232));
+console.log(parFunkcija());
+console.log(parFunkcija(undefined));
 
 console.log ("METODAI");
 //Metodais vadinamos funkcijos, priskirtos duomenų tipų (objektų, skaičių ir kt.) savybėms. JS vadinama objektinio projektavimo kalba, nes funkcijos yra priskirtos jos objektams.
@@ -1101,7 +1124,7 @@ function recurseForever(a) {
 
   const asmuo = new Obj ("Tomas", 1989)
   
-  //Object.freeze(asmuo);
+  Object.freeze(asmuo);
   
   console.log(asmuo);
 
@@ -1109,3 +1132,17 @@ function recurseForever(a) {
   console.log(asmuo);
   asmuo.pilietybė = "lietuvis (-ė)"
   console.log(asmuo);
+
+  const sum = (...args) => {
+    let sumOfArgs = 0;
+    console.log (args);
+    for (let i = 0; i<args.length; i++) {
+      sumOfArgs += args[i];
+    }
+    return console.log (sumOfArgs);
+  }
+  sum (2, 4, 8)
+  //console.log(sum(2, 4, 8))
+  console.log(asmuo.__proto__);
+  console.log(AsmuoKitas);
+  console.log (Object ());
