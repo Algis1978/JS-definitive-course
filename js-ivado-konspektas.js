@@ -393,6 +393,32 @@ let l = m => m + 10;
 console.log(l(10));
 //Funkcjos gali būti iššaukiamos vartotojo (pvz., paspaudus mygtuką WWW pslapyje), iš JS kodo arba veikti automatiškai.
 
+//Funkcijos argumentai. Paprastai funkcijos vykdymui pateikiamų argumetų kiekis yra lygus jos parametrų kiekiui, tačiau galima jų pateikti daugiau arba mažiau. Tokiu atveju funkcja vykdys operacijas su pasiekiamu argumentų skaičiumi - ignoruos perteklinius, arba vykdys tik su pirmaisiais.
+function suma (a, b, c) {
+    return a+b+c;
+}
+console.log(suma(5, 7));// rezultatas NaN, funkcijos parametras c - undefined.
+console.log(suma());// rezultatas NaN, visi funkcijos parametrai - undefined.
+console.log(suma);//nepateikus argumentų ekspresijos, onsole.log grąžins funkcijos aprašymą.
+console.log(suma(5, 7, 8, 10));// rezultatas 20, funkcija neturėjo, kur panaudoti ketvirtą parametrą.
+
+//Tačiau funkcijai perduoti perteklinia argumentai nieku neingsta. Jie yra įrašomi į funkcijos objekto 'arguments' savybes.
+function kitaSuma (a, b, c) {
+    console.log (arguments);
+    return a+b+c;
+}
+kitaSuma (0, 2, 4, 6, 8, 10);
+//'arguments' yra masyvas su indeksuotomis argumentų pozicijomis, tad galima parašyti funkciją, kuri dirbtų tik su perduotais argumentais.
+function išvestiArgumentus0ir3 () {
+    let l = [];
+    l.push(arguments[0])
+    l.push(arguments[0])
+    return l
+}
+console.log (išvestiArgumentus0ir3(5, 2, 3, 9, 8, 4));
+//Funkcijos objektas 'arguments' pasiekiamas tik iš funkcijos vidaus.
+console.log (suma.arguments);
+
 console.log ("METODAI");
 //Metodais vadinamos funkcijos, priskirtos duomenų tipų (objektų, skaičių ir kt.) savybėms. JS vadinama objektinio projektavimo kalba, nes funkcijos yra priskirtos jos objektams.
 let masyvas = [1, 2, 3, 4, 5, 6, 7]
@@ -1065,3 +1091,21 @@ function recurseForever(a) {
   const myConcat = (arr1, arr2) => arr1.concat(arr2);
 
   console.log(myConcat ([5, 6, 7], {"lia-lia":"BOOM"}));
+
+  class Obj {
+    constructor (vardas, gimimo_metai){
+        this.vardas = vardas;
+        this.gimimo_metai = gimimo_metai;
+    }
+}
+
+  const asmuo = new Obj ("Tomas", 1989)
+  
+  //Object.freeze(asmuo);
+  
+  console.log(asmuo);
+
+  Obj.prototype.gimimo_vieta = "Klaipėda";
+  console.log(asmuo);
+  asmuo.pilietybė = "lietuvis (-ė)"
+  console.log(asmuo);
