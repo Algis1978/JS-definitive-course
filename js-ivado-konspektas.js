@@ -144,7 +144,7 @@ Asmuo.prototype.pilnasVardas = function () {return this.vardas+" "+this.pavardė
 //Šie metodai taps prieinami visiems objektams, paveldintiems šablono prototipą.
 console.log(asmuo1.pilnasVardas());
 
-//Objektų šablono sukūrimas per class raktažodį. Tai ES6 sintaksės metodas ir nesprantamas senesnėse ES5 JS versijas palaikančiose naršyklėse.
+//Objektų šablono sukūrimas per class raktažodį. Tai ES6 sintaksės metodas ir nesuprantamas senesnėse ES5 JS versijas palaikančiose naršyklėse.
 class AsmuoKitas {
     constructor (vardas, pavardė, amžius, lytis){
         this.vardas = vardas;
@@ -159,11 +159,43 @@ let asmuo2 = new AsmuoKitas ("Tomas", "Lukaitis", "34", "vyras");
 console.log (asmuo2);
 asmuo2.asmensAprašymas();
 console.log(asmuo2.asmensAprašymas());
-//Naujos savybės ir metodai įvedam  prototipą kaip ir constructor šablono atveju
+//Naujos savybės ir metodai įvedami į  prototipą kaip ir constructor šablono atveju
 AsmuoKitas.prototype.pilietybė = "lietuvis (-ė)";
 console.log(asmuo2.pilietybė);
 AsmuoKitas.prototype.pilnasVardas = function () {return this.vardas+" "+this.pavardė};
 console.log(asmuo2.pilnasVardas());
+
+//Naujas objektas gali būti sukurtas per Object.create komandą, be tai neveikia su class šablonu:
+let asmuo4 = Object.create(Asmuo.prototype);
+Asmuo.call (asmuo4, "Andrius", "Ringaitis", "23", "vyras");
+console.log (asmuo4);
+
+//Šablono, remiantis šablonu, sukūrimas.
+//Sukūriamas naujas šablonas:
+function AsmuoDarKitas (vardas, pavardė, amžius, lytis){
+    AsmuoKitas.call (this, vardas, pavardė, amžius, lytis);
+    this.regionas = regionas;}
+    // Sukuriamas naujo šablono prototipo objektas nukopijuojant jį iš pirmojo objekto.
+    AsmuoDarKitas.prototype = Object.create(AsmuoKitas.prototype);
+    //Po to prototipo constructor sulyginamas su objekto constructor:
+    AsmuoDarKitas.prototype.constructor = AsmuoDarKitas;
+    //Galima paruošti prototipo funkcijų kopijavimui sukuriant papildomą objektą:
+    AsmuoDarKitas.prototype.sablonoPrototype = AsmuoKitas.prototype;
+    //Po to galima įterpti ir funkcijas ir savybes į prototipą.
+    //To pačio pavadinimo savybė/funkcija turi pirmenybę prieš paveldėtas savybes/funkcijas.
+    //Funkcijos turinio kopijavimas iš šablono prototipo:
+    //this.sablonoPrototype.funkcijosPav.call(this, parametras).
+
+    //Sukūrimas su klasėmis yra paprastesnis:
+    class AsmuoDarKitas2 extends AsmuoKitas {
+        constructor (vardas, pavardė, amžius, lytis) {
+            super (vardas, pavardė, amžius, lytis);
+            this.regionas = regionas;
+        }
+        //Ir čia įvedamos funkcijos. To pačio pavadinimo funkcija turi pirmenybę prieš paveldėtas.
+        // Paveldėtų funkcijas galima nukopijuoti su super.funkcijosPav(). ir įvedus į tėvynę funkciją, ją praplėsti.
+    }
+
 
 console.log ("OBJEKTŲ SAVYBIŲ SAVYBĖS");
 //Į objektą galima įvesti arba pakeisti savybes, kurių savybes programuotojas gali pats nustatyti per Object.defineProperty metodą:
@@ -176,17 +208,39 @@ Object.defineProperty(asmuo2, "pilietybė", {
 console.log(asmuo2.pilietybė);
 
 //get ir set funkcijos.
-//Vietoj 'writable' ir 'value' savybių galimanaudoti funkcijas 'get' ir 'set'. Tokiu atveju savybę aprašys šios funkcijos:
-let asmuo3 = new AsmuoKitas ("Jurga", "Sedytė", "30", "moteris");
+//Vietoj 'writable' ir 'value' savybių galima naudoti funkcijas 'get' ir 'set'. Tokiu atveju savybę aprašys šios funkcijos:
+let asmuo3 = new AsmuoKitas ("Jurga", "Kvietaitė", "30", "moteris");
 Object.defineProperty(asmuo3, "amžius", {
     enumerable: true, 
     configurable: true,
     get: function (){return 100},
     set: function () {
-
     }
 });
-//Object.freeze () funkcija pavers objektą nekeičiamu.
+console.log(asmuo3);
+
+//Get/Set veikimas
+class Thermostat {
+    constructor (farenheit) {
+      this.farenheit = farenheit;
+    }
+    //Get iš vidinių duomenų sukuria naują savybę:
+    get temperature (){
+      return 5/9 * (this.farenheit - 32)
+    }
+    //Jei naudotojas keičia naują savybę, Set pakeičia esamas.
+    set temperature (celsius){
+      this.farenheit = celsius*9.0 / 5 + 32;
+    }
+  }
+  // Only change code above this line
+  
+ const manoTermosas = new Thermostat (114);
+ console.log(manoTermosas);
+ manoTermosas.temperature = 40;
+ console.log(manoTermosas);
+//
+//Object.freeze() funkcija pavers objektą nekeičiamu.
 Object.freeze (asmuo2);
 asmuo2.tarmė = "žemaitis (-ė)";
 console.log (asmuo2.tarmė);
@@ -1146,3 +1200,15 @@ function recurseForever(a) {
   console.log(asmuo.__proto__);
   console.log(AsmuoKitas);
   console.log (Object ());
+
+  const createPerson = (name, age, gender) => {
+    // Only change code below this line
+    return {
+      name,
+      age,
+      gender
+    };
+    // Only change code above this line
+  };
+  console.log (createPerson());
+
