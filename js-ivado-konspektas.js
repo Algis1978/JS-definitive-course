@@ -154,6 +154,9 @@ class AsmuoKitas {
     }
         asmensAprašymas = function () {return this.vardas+" "+this.pavardė+" yra "+this.amžius+" amžiaus "+this.lytis+"."
         };
+        apskritimoPerimetras (r) {
+            return 2*Math.PI*r
+        }
 }
 let asmuo2 = new AsmuoKitas ("Tomas", "Lukaitis", "34", "vyras");
 console.log (asmuo2);
@@ -484,8 +487,8 @@ console.log (išvestiArgumentus0ir3(5, 2, 3, 9, 8, 4));
 //Funkcijos objektas 'arguments' pasiekiamas tik iš funkcijos vidaus.
 console.log (suma.arguments);
 
-//Rodyklinė funkcija yra trumpesnis funkcijos užrašymas, kai ji panadojama tik vieną kartą ar tik su vienu kintamuoju) ir nebus naudojama daugiau.
-//Rodyklinėje funkcijoje nebereikia panaudoti raktažodžių'function' ir 'return', tačiau rodyklinės funkcijos netinkamos naudoti objektų metodams nustatyti, nes neveikia su raktažodžiu 'this'. 
+//Rodyklinė funkcija yra trumpesnis funkcijos užrašymas, kai ji panaudojama tik vieną kartą ar tik su vienu kintamuoju) ir nebus naudojama daugiau.
+//Rodyklinėje funkcijoje nebereikia panaudoti raktažodžių'function' ir 'return', tačiau rodyklinės funkcijos netinkamos naudoti objektų metodams nustatyti, nes neveikia su raktažodžiu 'this', taip pat neturi argumentų sąrašo, nes nesukuriamas rodyklinės funkcijos prototipas. 
 //Rodyklinės funkcijos argumentai nurodomi prieš => ženklą ir turinys - už jo, turiniui nebereikia {} skliaustų.
 const rodFunkcija = (a, b) => (a*b)/(a-b);
 console.log(rodFunkcija(5, 2));
@@ -995,8 +998,18 @@ console.log(h);
 //Įvestą funkciją galima iššaukti bet kurioje bloko vietoje. Įveskite 1-oje kodo eilutėje console.log (blokoNaudojimoPavyzdys2 (40, 4)); ir rezultatas bus pavaizduotas konsolėje nepaisant to, kad pati funkcija aprašyta vėlesnėse eilutėse.
 //Vengtina kurti to paties pavadinimo ar globalaus objekto pavadinimo funkcijas, metodus. 
 
-// Setup
-// Setup
+console.log ("PROMISE KLASĖ")
+//Promisas yra trijų būsenų objektas.
+//1. Pending - laukimo būsena;
+//2. Resolve - patvirtinimo būsena, jei iškviesta 'resolve' funkcija;
+//3. Reject - atmetimo būsena iiškvietu 'reject' funkciją ir gavus patvirtinimą apie klaidą.
+let promise = new Promise (
+    (resolve, reject) => {
+        resolve ("užklausa patvirtinta");
+
+    }
+)
+
 var contacts = [
     {
         "firstName": "Akira",
@@ -1017,7 +1030,7 @@ var contacts = [
         "likes": ["Intriguing Cases", "Violin"]
     },
     {
-        "firstName": "Kristian",
+        "firstName": "Kristian", 
         "lastName": "Vos",
         "number": "unknown",
         "likes": ["JavaScript", "Gaming", "Foxes"]
@@ -1212,3 +1225,15 @@ function recurseForever(a) {
   };
   console.log (createPerson());
 
+asmuo2.apskritimoPerimetras (8);
+
+function ZmogusSenas(vardas, pavarde) {
+    this.vardas = vardas;
+    this.pavarde = pavarde;
+    }
+    ZmogusSenas.prototype.labas = function() {
+    console.log(`Labas ${this.vardas} ${this.pavarde}`);
+    }
+    let zs = new ZmogusSenas("Petras", "Petraitis");
+
+  
